@@ -68,11 +68,6 @@ final class UnderlineTextField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        invalidateIntrinsicContentSize()
-    }
-    
     //MARK: - Helpers
     
     private func layout() {
@@ -80,6 +75,9 @@ final class UnderlineTextField: UIView {
         vStackView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
         }
+        
+        layoutIfNeeded()
+        invalidateIntrinsicContentSize()
     }
     
     //MARK: - Actions

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum APIState: Comparable {
+    case none
+    case loading
+    case success(String)
+    case failed(String)
+}

@@ -7,23 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4AE2AEA968900F82081 /* UIViewController.swift */; };
+		CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */; };
+		CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B32AEA9FA300F82081 /* APIState.swift */; };
 		CFF8B1462AEA46B4003CC800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1452AEA46B4003CC800 /* AppDelegate.swift */; };
 		CFF8B1482AEA46B4003CC800 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1472AEA46B4003CC800 /* SceneDelegate.swift */; };
-		CFF8B14A2AEA46B4003CC800 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1492AEA46B4003CC800 /* ViewController.swift */; };
-		CFF8B14D2AEA46B4003CC800 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF8B14B2AEA46B4003CC800 /* Main.storyboard */; };
 		CFF8B14F2AEA46B4003CC800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF8B14E2AEA46B4003CC800 /* Assets.xcassets */; };
 		CFF8B1522AEA46B4003CC800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF8B1502AEA46B4003CC800 /* LaunchScreen.storyboard */; };
+		CFF8B15F2AEA4755003CC800 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B15E2AEA4755003CC800 /* LoginViewController.swift */; };
+		CFF8B1632AEA476D003CC800 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1622AEA476D003CC800 /* SignUpViewController.swift */; };
+		CFF8B1662AEA47A9003CC800 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1652AEA47A9003CC800 /* Constants.swift */; };
+		CFF8B1692AEA4A02003CC800 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1682AEA4A02003CC800 /* SnapKit */; };
+		CFF8B16B2AEA4A02003CC800 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B16A2AEA4A02003CC800 /* SnapKit-Dynamic */; };
+		CFF8B16E2AEA4A0C003CC800 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B16D2AEA4A0C003CC800 /* SDWebImage */; };
+		CFF8B1702AEA4A0C003CC800 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B16F2AEA4A0C003CC800 /* SDWebImageMapKit */; };
+		CFF8B1732AEA5240003CC800 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1722AEA5240003CC800 /* RxBlocking */; };
+		CFF8B1752AEA5240003CC800 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1742AEA5240003CC800 /* RxBlocking-Dynamic */; };
+		CFF8B1772AEA5240003CC800 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1762AEA5240003CC800 /* RxCocoa */; };
+		CFF8B1792AEA5240003CC800 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1782AEA5240003CC800 /* RxCocoa-Dynamic */; };
+		CFF8B17B2AEA5240003CC800 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B17A2AEA5240003CC800 /* RxRelay */; };
+		CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B17C2AEA5431003CC800 /* LoginViewModel.swift */; };
+		CFF8B1802AEA59DC003CC800 /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B17F2AEA59DC003CC800 /* Reactive.swift */; };
+		CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1812AEA5EDF003CC800 /* UnderlineTextField.swift */; };
+		CFF8B1842AEA71CC003CC800 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1832AEA71CC003CC800 /* SignUpViewModel.swift */; };
+		CFF8B1862AEA78F9003CC800 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1852AEA78F9003CC800 /* User.swift */; };
+		CFF8B1882AEA7DDD003CC800 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1872AEA7DDD003CC800 /* AuthService.swift */; };
+		CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1892AEA7F4B003CC800 /* APIError.swift */; };
+		CFF8B18C2AEA7FC4003CC800 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */; };
+		CFF8B18F2AEA8034003CC800 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B18E2AEA8034003CC800 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CFACC4AE2AEA968900F82081 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		CFACC4B32AEA9FA300F82081 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
 		CFF8B1422AEA46B4003CC800 /* KakaoClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF8B1452AEA46B4003CC800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFF8B1472AEA46B4003CC800 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CFF8B1492AEA46B4003CC800 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CFF8B14C2AEA46B4003CC800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFF8B14E2AEA46B4003CC800 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFF8B1512AEA46B4003CC800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFF8B1532AEA46B4003CC800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFF8B15E2AEA4755003CC800 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CFF8B1622AEA476D003CC800 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CFF8B1652AEA47A9003CC800 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CFF8B17C2AEA5431003CC800 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CFF8B17F2AEA59DC003CC800 /* Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reactive.swift; sourceTree = "<group>"; };
+		CFF8B1812AEA5EDF003CC800 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
+		CFF8B1832AEA71CC003CC800 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		CFF8B1852AEA78F9003CC800 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CFF8B1872AEA7DDD003CC800 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		CFF8B1892AEA7F4B003CC800 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +65,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFF8B17B2AEA5240003CC800 /* RxRelay in Frameworks */,
+				CFF8B1792AEA5240003CC800 /* RxCocoa-Dynamic in Frameworks */,
+				CFF8B16E2AEA4A0C003CC800 /* SDWebImage in Frameworks */,
+				CFF8B1692AEA4A02003CC800 /* SnapKit in Frameworks */,
+				CFF8B1702AEA4A0C003CC800 /* SDWebImageMapKit in Frameworks */,
+				CFF8B18F2AEA8034003CC800 /* Alamofire in Frameworks */,
+				CFF8B1772AEA5240003CC800 /* RxCocoa in Frameworks */,
+				CFF8B1752AEA5240003CC800 /* RxBlocking-Dynamic in Frameworks */,
+				CFF8B16B2AEA4A02003CC800 /* SnapKit-Dynamic in Frameworks */,
+				CFF8B1732AEA5240003CC800 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CFACC4B02AEA98D600F82081 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B1812AEA5EDF003CC800 /* UnderlineTextField.swift */,
+				CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		CFF8B1392AEA46B3003CC800 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +109,82 @@
 		CFF8B1442AEA46B4003CC800 /* KakaoClone */ = {
 			isa = PBXGroup;
 			children = (
-				CFF8B1452AEA46B4003CC800 /* AppDelegate.swift */,
-				CFF8B1472AEA46B4003CC800 /* SceneDelegate.swift */,
-				CFF8B1492AEA46B4003CC800 /* ViewController.swift */,
-				CFF8B14B2AEA46B4003CC800 /* Main.storyboard */,
+				CFF8B1592AEA46F3003CC800 /* App */,
+				CFF8B15C2AEA4702003CC800 /* Model */,
+				CFF8B15B2AEA46FF003CC800 /* View */,
+				CFF8B15A2AEA46FA003CC800 /* ViewModel */,
+				CFF8B15D2AEA470F003CC800 /* Service */,
+				CFF8B1642AEA479F003CC800 /* Utils */,
 				CFF8B14E2AEA46B4003CC800 /* Assets.xcassets */,
 				CFF8B1502AEA46B4003CC800 /* LaunchScreen.storyboard */,
 				CFF8B1532AEA46B4003CC800 /* Info.plist */,
 			);
 			path = KakaoClone;
+			sourceTree = "<group>";
+		};
+		CFF8B1592AEA46F3003CC800 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B1452AEA46B4003CC800 /* AppDelegate.swift */,
+				CFF8B1472AEA46B4003CC800 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CFF8B15A2AEA46FA003CC800 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B17C2AEA5431003CC800 /* LoginViewModel.swift */,
+				CFF8B1832AEA71CC003CC800 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CFF8B15B2AEA46FF003CC800 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B15E2AEA4755003CC800 /* LoginViewController.swift */,
+				CFF8B1622AEA476D003CC800 /* SignUpViewController.swift */,
+				CFACC4B02AEA98D600F82081 /* Custom */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CFF8B15C2AEA4702003CC800 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFACC4B32AEA9FA300F82081 /* APIState.swift */,
+				CFF8B1892AEA7F4B003CC800 /* APIError.swift */,
+				CFF8B1852AEA78F9003CC800 /* User.swift */,
+				CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFF8B15D2AEA470F003CC800 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B1872AEA7DDD003CC800 /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CFF8B1642AEA479F003CC800 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B17E2AEA59D0003CC800 /* Extensions */,
+				CFF8B1652AEA47A9003CC800 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CFF8B17E2AEA59D0003CC800 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B17F2AEA59DC003CC800 /* Reactive.swift */,
+				CFACC4AE2AEA968900F82081 /* UIViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +203,18 @@
 			dependencies = (
 			);
 			name = KakaoClone;
+			packageProductDependencies = (
+				CFF8B1682AEA4A02003CC800 /* SnapKit */,
+				CFF8B16A2AEA4A02003CC800 /* SnapKit-Dynamic */,
+				CFF8B16D2AEA4A0C003CC800 /* SDWebImage */,
+				CFF8B16F2AEA4A0C003CC800 /* SDWebImageMapKit */,
+				CFF8B1722AEA5240003CC800 /* RxBlocking */,
+				CFF8B1742AEA5240003CC800 /* RxBlocking-Dynamic */,
+				CFF8B1762AEA5240003CC800 /* RxCocoa */,
+				CFF8B1782AEA5240003CC800 /* RxCocoa-Dynamic */,
+				CFF8B17A2AEA5240003CC800 /* RxRelay */,
+				CFF8B18E2AEA8034003CC800 /* Alamofire */,
+			);
 			productName = KakaoClone;
 			productReference = CFF8B1422AEA46B4003CC800 /* KakaoClone.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +243,12 @@
 				Base,
 			);
 			mainGroup = CFF8B1392AEA46B3003CC800;
+			packageReferences = (
+				CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CFF8B18D2AEA8034003CC800 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = CFF8B1432AEA46B4003CC800 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +265,6 @@
 			files = (
 				CFF8B1522AEA46B4003CC800 /* LaunchScreen.storyboard in Resources */,
 				CFF8B14F2AEA46B4003CC800 /* Assets.xcassets in Resources */,
-				CFF8B14D2AEA46B4003CC800 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +275,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF8B14A2AEA46B4003CC800 /* ViewController.swift in Sources */,
+				CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */,
+				CFF8B18C2AEA7FC4003CC800 /* AuthResponse.swift in Sources */,
+				CFF8B1662AEA47A9003CC800 /* Constants.swift in Sources */,
+				CFF8B1842AEA71CC003CC800 /* SignUpViewModel.swift in Sources */,
+				CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */,
+				CFF8B15F2AEA4755003CC800 /* LoginViewController.swift in Sources */,
+				CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */,
+				CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */,
+				CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */,
+				CFF8B1882AEA7DDD003CC800 /* AuthService.swift in Sources */,
 				CFF8B1462AEA46B4003CC800 /* AppDelegate.swift in Sources */,
+				CFF8B1802AEA59DC003CC800 /* Reactive.swift in Sources */,
+				CFF8B1632AEA476D003CC800 /* SignUpViewController.swift in Sources */,
+				CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */,
+				CFF8B1862AEA78F9003CC800 /* User.swift in Sources */,
 				CFF8B1482AEA46B4003CC800 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +297,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CFF8B14B2AEA46B4003CC800 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFF8B14C2AEA46B4003CC800 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CFF8B1502AEA46B4003CC800 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,9 +439,8 @@
 				INFOPLIST_FILE = KakaoClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +448,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dldmswo1209.KakaoClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -325,9 +469,8 @@
 				INFOPLIST_FILE = KakaoClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +478,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dldmswo1209.KakaoClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -363,6 +509,94 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.3;
+			};
+		};
+		CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+		CFF8B18D2AEA8034003CC800 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CFF8B1682AEA4A02003CC800 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CFF8B16A2AEA4A02003CC800 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		CFF8B16D2AEA4A0C003CC800 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		CFF8B16F2AEA4A0C003CC800 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		CFF8B1722AEA5240003CC800 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		CFF8B1742AEA5240003CC800 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		CFF8B1762AEA5240003CC800 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CFF8B1782AEA5240003CC800 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		CFF8B17A2AEA5240003CC800 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		CFF8B18E2AEA8034003CC800 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CFF8B18D2AEA8034003CC800 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CFF8B13A2AEA46B3003CC800 /* Project object */;
 }

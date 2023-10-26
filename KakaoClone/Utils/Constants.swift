@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+final class Constants {
+    static let baseURL = "http://localhost:8080"
+    
+}
