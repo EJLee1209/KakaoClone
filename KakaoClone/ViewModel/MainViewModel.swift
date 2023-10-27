@@ -25,7 +25,6 @@ final class MainViewModel {
             completion(makeLoginViewModel())
             return
         }
-        print("DEBUG loginID: \(loginID)")
         // 서버에 User 데이터 요청
         authService.fetchUser(id: loginID)
             .subscribe { [weak self] response in

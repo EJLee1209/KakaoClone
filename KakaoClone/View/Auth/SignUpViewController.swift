@@ -100,6 +100,7 @@ final class SignUpViewController: UIViewController {
     
     private let bag = DisposeBag()
     private let viewModel: SignUpViewModel
+    private var keyboardStateObserver: Disposable?
 
     //MARK: - LifeCycle
     
@@ -116,6 +117,18 @@ final class SignUpViewController: UIViewController {
         super.viewDidLoad()
         layout()
         bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        observeKeyboardState()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        keyboardStateObserver?.dispose()
     }
     
     override func viewDidLayoutSubviews() {
@@ -186,6 +199,32 @@ final class SignUpViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    private func observeKeyboardState() {
+        let keyboardWillShow = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+        let keyboardWillhide = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+        
+        keyboardStateObserver = Observable.merge(keyboardWillShow, keyboardWillhide)
+            .bind { [weak self] notification in
+                self?.updateConstraintsWhenChangedKeyboardState(notification.name)
+            }
+    }
+    
+    private func updateConstraintsWhenChangedKeyboardState(_ notificationName: Notification.Name) {
+        if notificationName == UIResponder.keyboardWillShowNotification {
+            // 키보드 올라옴
+            profileImageButton.snp.updateConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide).offset(-80)
+            }
+        } else{
+            // 키보드 내려감
+            profileImageButton.snp.updateConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
+            }
+        }
+        
+        UIView.animate(withDuration: 0.5, animations: view.layoutIfNeeded)
     }
     
     //MARK: - Actions

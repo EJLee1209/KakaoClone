@@ -38,7 +38,7 @@ final class LoginViewController: UIViewController {
     private let passwordTextField: UnderlineTextField = {
         let tf = UnderlineTextField(rightViewType: .textVisibilityButton)
         tf.textField.placeholder = "비밀번호"
-        tf.textField.returnKeyType = .next
+        tf.textField.returnKeyType = .done
         tf.textField.autocapitalizationType = .none
         tf.textField.autocorrectionType = .no
         tf.textField.isSecureTextEntry = true
@@ -92,6 +92,8 @@ final class LoginViewController: UIViewController {
     private let viewModel: LoginViewModel
     weak var delegate: AuthResultDelegate?
     
+    private var keyboardStateObserver: Disposable?
+    
     
     //MARK: - LifeCycle
     
@@ -109,6 +111,19 @@ final class LoginViewController: UIViewController {
 
         layout()
         bind()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        observeKeyboardState()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        keyboardStateObserver?.dispose()
     }
     
     //MARK: - Helpers
@@ -155,6 +170,39 @@ final class LoginViewController: UIViewController {
                 print("DEBUG SignIn State: \(state)")
                 self?.showAlert(state: state)
             }.disposed(by: bag)
+    }
+    
+    private func observeKeyboardState() {
+        let keyboardWillShow = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+        let keyboardWillhide = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+        
+        keyboardStateObserver = Observable.merge(keyboardWillShow, keyboardWillhide)
+            .bind { [weak self] notification in
+                self?.updateConstraintsWhenChangedKeyboardState(notification.name)
+            }
+    }
+    
+    private func updateConstraintsWhenChangedKeyboardState(_ notificationName: Notification.Name) {
+        // 키보드 높이 가져오는 법
+//          guard let userInfo = notification.userInfo else { return }
+//          guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+//
+//          let keyboardHeight = notification.name == UIResponder.keyboardWillShowNotification ? keyboardFrame.height : 0
+//          print("DEBUG keyboard height: \(keyboardHeight)")
+        if notificationName == UIResponder.keyboardWillShowNotification {
+
+            // 키보드 올라옴
+            logoView.snp.updateConstraints { make in
+                make.top.equalTo(self.view.safeAreaLayoutGuide).inset(10)
+            }
+        } else{
+            // 키보드 내려감
+            logoView.snp.updateConstraints { make in
+                make.top.equalTo(self.view.safeAreaLayoutGuide).inset(80)
+            }
+        }
+        
+        UIView.animate(withDuration: 0.5, animations: view.layoutIfNeeded)
     }
     
     private func showAlert(state: APIState) {

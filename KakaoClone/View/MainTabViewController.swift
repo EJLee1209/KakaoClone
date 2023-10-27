@@ -32,7 +32,15 @@ final class MainTabViewController: UITabBarController {
         viewModel.checkLogin { [weak self] vm in
             guard let loginVM = vm else {
                 // 이미 로그인 함
-                guard let user = self?.viewModel.user else { return }
+                guard let user = self?.viewModel.user else {
+                    // 유저 정보 못가져옴
+                    let action = UIAlertAction(title: "확인", style: .cancel) { _ in
+                        guard let vm = self?.viewModel.makeLoginViewModel() else { return }
+                        self?.goToLogin(vm) // 로그인 화면으로 이동
+                    }
+                    self?.showAlert(title: "자동 로그인", message: "유저 정보를 가져올 수 없습니다", actions: [action])
+                    return
+                }
                 self?.configureViewControllers(with: user)
                 return
             }
@@ -103,7 +111,6 @@ extension MainTabViewController: AuthResultDelegate {
         dismiss(animated: true)
         viewModel.user = user
         configureViewControllers(with: user)
-        print("DEBUG login user: \(user)")
         UserDefaults.standard.setValue(user.id, forKey: "loginID") // 로그인 정보 저장
     }
 }

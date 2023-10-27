@@ -7,6 +7,7 @@
 
 import UIKit
 import RxCocoa
+import RxSwift
 
 enum RightViewType {
     case clearButton
@@ -43,6 +44,7 @@ final class UnderlineTextField: UIView {
     var text: ControlProperty<String?> {
         return textField.rx.text
     }
+    
     
     override var intrinsicContentSize: CGSize {
         return .init(width: vStackView.frame.width, height: vStackView.frame.height)
