@@ -11,4 +11,5 @@ final class Constants {
     static let baseURL = "http://localhost:8080"
     static let signUpEndPoint = "\(baseURL)/register"
     static let signInEndPoint = "\(baseURL)/login"
+    static let fetchUserEndPoint = "\(baseURL)/user?id="
 }

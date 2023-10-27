@@ -7,17 +7,44 @@
 
 import UIKit
 
-class MainTabViewController: UITabBarController {
+final class MainTabViewController: UITabBarController {
     //MARK: - Properties
 
+    let viewModel: MainViewModel
+    
     //MARK: - LifeCycle
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureViewControllers()
+        view.backgroundColor = .white
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let loginVM = viewModel.checkLogin() else {
+            // 이미 로그인함
+            configureViewControllers()
+            return
+        }
+        // 로그인 필요
+        let loginVC = LoginViewController(viewModel: loginVM)
+        loginVC.delegate = self
+        let nav = UINavigationController(rootViewController: loginVC)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
     }
     
     //MARK: - Helpers
+    
+    
     private func configureViewControllers() {
         
         let friends = templateNavigationController(
@@ -52,4 +79,15 @@ class MainTabViewController: UITabBarController {
     }
 
 
+}
+
+//MARK: - AuthResultDelegate
+extension MainTabViewController: AuthResultDelegate {
+    // LoginViewController에서 로그인 시 delegate 패턴으로 User 데이터를 전달 받음
+    func result(user: User) {
+        dismiss(animated: true)
+        viewModel.user = user
+        configureViewControllers()
+        print("DEBUG login user: \(user)")
+    }
 }

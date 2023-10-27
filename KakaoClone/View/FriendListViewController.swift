@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FriendListViewController: UIViewController {
+final class FriendListViewController: UIViewController {
     //MARK: - Properties
     
 
@@ -18,6 +18,7 @@ class FriendListViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemPurple
+        
     }
     //MARK: - Helpers
 

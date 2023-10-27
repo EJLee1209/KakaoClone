@@ -10,6 +10,10 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
+protocol AuthResultDelegate: AnyObject{
+    func result(user: User)
+}
+
 final class LoginViewController: UIViewController {
     
     //MARK: - Properties
@@ -85,7 +89,8 @@ final class LoginViewController: UIViewController {
     }()
     
     private let bag = DisposeBag()
-    let viewModel: LoginViewModel
+    private let viewModel: LoginViewModel
+    weak var delegate: AuthResultDelegate?
     
     
     //MARK: - LifeCycle
@@ -157,7 +162,13 @@ final class LoginViewController: UIViewController {
         case .success(let response):
             if response.status {
                 // 로그인 성공
-                print("DEBUG Login Success : \(response)")
+                guard let user = response.data else {
+                    let action = UIAlertAction(title: "확인", style: .default)
+                    showAlert(title: "로그인", message: "유저 데이터가 없습니다\n로그인을 다시 시도해주세요", actions: [action])
+                    return
+                }
+                delegate?.result(user: user)
+                
             } else{
                 // 로그인 실패
                 let action = UIAlertAction(title: "확인", style: .default)

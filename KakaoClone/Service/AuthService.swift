@@ -9,7 +9,25 @@ import RxSwift
 import UIKit
 import Alamofire
 
+
 final class AuthService {
+    
+    func fetchUser(id: String) -> Observable<AuthResponse> {
+        let header : HTTPHeaders = ["Content-Type": "application/json"]
+        
+        return Observable<AuthResponse>.create { observer in
+            let request = AF.request(
+                "\(Constants.fetchUserEndPoint)\(id)",
+                method: .get,
+                encoding: JSONEncoding.default,
+                headers: header
+            ).responseData(completionHandler: self.authCompletion(observer: observer))
+            
+            return Disposables.create {
+                request.cancel() // Observable이 dispose될 때, 요청 취소
+            }
+        }
+    }
     
     func signIn(
         id: String,
@@ -27,7 +45,7 @@ final class AuthService {
             ).responseData(completionHandler: self.authCompletion(observer: observer))
             
             return Disposables.create {
-                request.cancel() // Observable이 dispose될 때, 요청 취소
+                request.cancel()
             }
         }
     }

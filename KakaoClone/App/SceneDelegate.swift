@@ -16,12 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-//        let authService = AuthService()
-//        let loginVM = LoginViewModel(authService: authService)
-//        let vc = LoginViewController(viewModel: loginVM)
-//        let nav = UINavigationController(rootViewController: vc)
-        
-        let mainTab = MainTabViewController()
+        let authService = AuthService()
+        let mainVM = MainViewModel(authService: authService)
+        let mainTab = MainTabViewController(viewModel: mainVM)
         
         window.rootViewController = mainTab
         self.window = window
