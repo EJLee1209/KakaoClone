@@ -12,6 +12,7 @@ struct User: Codable{
     var name: String
     let password: String
     var imagePath: String?
+    var stateMessage: String?
     
     var imageUrl: URL? {
         guard let imagePath = imagePath else { return nil }
@@ -23,5 +24,6 @@ struct User: Codable{
         case name
         case password
         case imagePath = "profile_image_path"
+        case stateMessage = "state_message"
     }
 }

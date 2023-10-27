@@ -6,3 +6,21 @@
 //
 
 import Foundation
+import RxSwift
+
+
+
+final class FriendListViewModel {
+    
+    let user: User
+    let dataSource: [FriendListSection]
+    
+    init(user: User) {
+        self.user = user
+        self.dataSource = [
+            .userProfileSection(user: user),
+            .friendsSection(users: [])
+        ]
+    }
+    
+}

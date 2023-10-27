@@ -11,6 +11,10 @@
 		CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848452AEBA3050020F848 /* MainTabViewController.swift */; };
 		CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */; };
 		CF18484A2AEBA7D00020F848 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848492AEBA7D00020F848 /* MainViewModel.swift */; };
+		CF1848502AEBB80E0020F848 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18484F2AEBB80E0020F848 /* UserProfileHeader.swift */; };
+		CF1848522AEBBA540020F848 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848512AEBBA540020F848 /* FriendListViewModel.swift */; };
+		CF1848542AEBBFD70020F848 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848532AEBBFD70020F848 /* FriendCell.swift */; };
+		CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848552AEBC50C0020F848 /* FriendListSection.swift */; };
 		CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4AE2AEA968900F82081 /* UIViewController.swift */; };
 		CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */; };
 		CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B32AEA9FA300F82081 /* APIState.swift */; };
@@ -46,6 +50,10 @@
 		CF1848452AEBA3050020F848 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		CF1848492AEBA7D00020F848 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		CF18484F2AEBB80E0020F848 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		CF1848512AEBBA540020F848 /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
+		CF1848532AEBBFD70020F848 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		CF1848552AEBC50C0020F848 /* FriendListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListSection.swift; sourceTree = "<group>"; };
 		CFACC4AE2AEA968900F82081 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		CFACC4B32AEA9FA300F82081 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
@@ -107,6 +115,24 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		CF18484B2AEBB6A90020F848 /* FriendList */ = {
+			isa = PBXGroup;
+			children = (
+				CF1848432AEBA28E0020F848 /* FriendListViewController.swift */,
+				CF18484F2AEBB80E0020F848 /* UserProfileHeader.swift */,
+				CF1848532AEBBFD70020F848 /* FriendCell.swift */,
+			);
+			path = FriendList;
+			sourceTree = "<group>";
+		};
+		CF18484C2AEBB6B10020F848 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
 		CFACC4B02AEA98D600F82081 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +188,7 @@
 			children = (
 				CF1848422AEB9A0D0020F848 /* Auth */,
 				CF1848492AEBA7D00020F848 /* MainViewModel.swift */,
+				CF1848512AEBBA540020F848 /* FriendListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -169,11 +196,11 @@
 		CFF8B15B2AEA46FF003CC800 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF1848452AEBA3050020F848 /* MainTabViewController.swift */,
 				CF1848412AEB9A010020F848 /* Auth */,
 				CFACC4B02AEA98D600F82081 /* Custom */,
-				CF1848432AEBA28E0020F848 /* FriendListViewController.swift */,
-				CF1848452AEBA3050020F848 /* MainTabViewController.swift */,
-				CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */,
+				CF18484B2AEBB6A90020F848 /* FriendList */,
+				CF18484C2AEBB6B10020F848 /* ChatList */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +212,7 @@
 				CFF8B1892AEA7F4B003CC800 /* APIError.swift */,
 				CFF8B1852AEA78F9003CC800 /* User.swift */,
 				CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */,
+				CF1848552AEBC50C0020F848 /* FriendListSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1848522AEBBA540020F848 /* FriendListViewModel.swift in Sources */,
 				CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */,
 				CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */,
 				CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */,
@@ -313,9 +342,12 @@
 				CFF8B15F2AEA4755003CC800 /* LoginViewController.swift in Sources */,
 				CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */,
 				CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */,
+				CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */,
+				CF1848502AEBB80E0020F848 /* UserProfileHeader.swift in Sources */,
 				CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */,
 				CFF8B1882AEA7DDD003CC800 /* AuthService.swift in Sources */,
 				CFF8B1462AEA46B4003CC800 /* AppDelegate.swift in Sources */,
+				CF1848542AEBBFD70020F848 /* FriendCell.swift in Sources */,
 				CFF8B1802AEA59DC003CC800 /* Reactive.swift in Sources */,
 				CFF8B1632AEA476D003CC800 /* SignUpViewController.swift in Sources */,
 				CF18484A2AEBA7D00020F848 /* MainViewModel.swift in Sources */,

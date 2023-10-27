@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum FriendListSection {
+    case userProfileSection(user: User)
+    case friendsSection(users: [User])
+}

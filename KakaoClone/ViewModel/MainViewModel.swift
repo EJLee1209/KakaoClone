@@ -19,20 +19,21 @@ final class MainViewModel {
         self.authService = authService
     }
     
-    func checkLogin() -> LoginViewModel? {
+    func checkLogin(completion: @escaping (LoginViewModel?) -> Void) {
         guard let loginID = UserDefaults.standard.string(forKey: "loginID") else {
             // 로그인 필요
-            return LoginViewModel(authService: authService)
+            completion(LoginViewModel(authService: authService))
+            return
         }
         // 서버에 User 데이터 요청
         authService.fetchUser(id: loginID)
-            .subscribe { response in
-                print("DEBUG fetchUser successfully: \(response)")
+            .subscribe { [weak self] response in
+                self?.user = response.data
+                completion(nil)
             } onError: { error in
                 print("DEBUG fetchUser error: \(error)")
+                completion(nil)
             }.disposed(by: bag)
-
-        return nil
     }
     
 }
