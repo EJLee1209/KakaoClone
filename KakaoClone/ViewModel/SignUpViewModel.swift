@@ -39,7 +39,7 @@ final class SignUpViewModel {
     struct Output {
         var registerButtonEnabled: Observable<Bool>
         var passwordValidation: Observable<Bool>
-        var apiStateObservable: Observable<APIState>
+        var signUpStateObservable: Observable<APIState>
     }
     
     //MARK: - Helpers
@@ -73,7 +73,7 @@ final class SignUpViewModel {
         return Output(
             registerButtonEnabled: registerButtonEnabled,
             passwordValidation: passwordValidation,
-            apiStateObservable: self.state.skip(1).asObservable()
+            signUpStateObservable: self.state.skip(1).asObservable()
         )
     }
     
@@ -81,10 +81,10 @@ final class SignUpViewModel {
         state.accept(.loading)
         let user = User(id: id, name: name, password: password)
         
-        authService.signup(user: user, image: profileImage) { [weak self] result in
+        authService.signUp(user: user, image: profileImage) { [weak self] result in
             switch result {
             case .success(let response):
-                self?.state.accept(.success(response.message))
+                self?.state.accept(.success(response))
             case .failure(let error):
                 self?.state.accept(.failed(error.customDescription))
             }

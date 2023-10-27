@@ -163,24 +163,26 @@ final class SignUpViewController: UIViewController {
             .bind(to: registerButton.rx.loginButtonEnabled)
             .disposed(by: bag)
         
-        output.apiStateObservable
+        output.signUpStateObservable
             .bind { [weak self] state in
                 self?.showAlert(state: state)
             }.disposed(by: bag)
     }
     
     private func showAlert(state: APIState) {
-        registerButton.isLoading = state == .loading
-        
         switch state {
-        case .success(let message):
+        case .success(let response):
             let action = UIAlertAction(title: "확인", style: .default) {[weak self] _ in
                 self?.navigationController?.popViewController(animated: true)
             }
-            showAlert(title: "회원가입", message: message, actions: [action])
+            showAlert(title: "회원가입", message: response.message, actions: [action])
+            registerButton.isLoading = false
         case .failed(let message):
             let action = UIAlertAction(title: "확인", style: .default)
             showAlert(title: "회원가입", message: message, actions: [action])
+            registerButton.isLoading = false
+        case .loading:
+            registerButton.isLoading = true
         default:
             break
         }

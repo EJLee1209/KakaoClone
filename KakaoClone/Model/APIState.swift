@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum APIState: Comparable {
+enum APIState {
     case none
     case loading
-    case success(String)
+    case success(AuthResponse)
     case failed(String)
 }

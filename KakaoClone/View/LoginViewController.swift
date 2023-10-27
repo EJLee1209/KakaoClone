@@ -51,7 +51,7 @@ final class LoginViewController: UIViewController {
         return label
     }()
     
-    private lazy var loginButton: LoadingButton = {
+    private let loginButton: LoadingButton = {
         let button = LoadingButton()
         button.setTitle("카카오계정 로그인", for: .normal)
         button.setTitleColor(.systemGray4, for: .disabled)
@@ -61,7 +61,6 @@ final class LoginViewController: UIViewController {
         button.isEnabled = false
         button.clipsToBounds = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.addTarget(self, action: #selector(handleLoginButtonTapped), for: .touchUpInside)
         button.originalBackgroundColor = .systemYellow
         return button
     }()
@@ -145,23 +144,42 @@ final class LoginViewController: UIViewController {
         output.passwordFormatLabelIsHidden
             .bind(to: messageLabel.rx.isHidden)
             .disposed(by: bag)
+        
+        output.signInStateObservable
+            .bind { [weak self] state in
+                print("DEBUG SignIn State: \(state)")
+                self?.showAlert(state: state)
+            }.disposed(by: bag)
+    }
+    
+    private func showAlert(state: APIState) {
+        switch state {
+        case .success(let response):
+            if response.status {
+                // 로그인 성공
+                print("DEBUG Login Success : \(response)")
+            } else{
+                // 로그인 실패
+                let action = UIAlertAction(title: "확인", style: .default)
+                showAlert(title: "로그인", message: response.message, actions: [action])
+            }
+            loginButton.isLoading = false
+        case .failed(let message):
+            let action = UIAlertAction(title: "확인", style: .default)
+            showAlert(title: "로그인", message: message, actions: [action])
+            loginButton.isLoading = false
+        case .loading:
+            loginButton.isLoading = true
+        default:
+            break
+        }
     }
     
     //MARK: - Actions
     
     @objc private func handleRegisterButtonTapped() {
-        let service = AuthService()
-        let vm = SignUpViewModel(authService: service)
-        let vc = SignUpViewController(viewModel: vm)
+        let vc = SignUpViewController(viewModel: viewModel.makeSignUpViewModel())
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc private func handleLoginButtonTapped() {
-        loginButton.isLoading.toggle()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.loginButton.isLoading.toggle()
-        }
     }
 }
 

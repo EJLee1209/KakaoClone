@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let loginVM = LoginViewModel()
+        let authService = AuthService()
+        let loginVM = LoginViewModel(authService: authService)
         let vc = LoginViewController(viewModel: loginVM)
         let nav = UINavigationController(rootViewController: vc)
         
