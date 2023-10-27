@@ -22,9 +22,10 @@ final class MainViewModel {
     func checkLogin(completion: @escaping (LoginViewModel?) -> Void) {
         guard let loginID = UserDefaults.standard.string(forKey: "loginID") else {
             // 로그인 필요
-            completion(LoginViewModel(authService: authService))
+            completion(makeLoginViewModel())
             return
         }
+        print("DEBUG loginID: \(loginID)")
         // 서버에 User 데이터 요청
         authService.fetchUser(id: loginID)
             .subscribe { [weak self] response in
@@ -34,6 +35,10 @@ final class MainViewModel {
                 print("DEBUG fetchUser error: \(error)")
                 completion(nil)
             }.disposed(by: bag)
+    }
+    
+    func makeLoginViewModel() -> LoginViewModel {
+        return LoginViewModel(authService: authService)
     }
     
 }

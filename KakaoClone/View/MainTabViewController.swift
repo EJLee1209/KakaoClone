@@ -37,22 +37,21 @@ final class MainTabViewController: UITabBarController {
                 return
             }
             // 로그인 필요
-            let loginVC = LoginViewController(viewModel: loginVM)
-            loginVC.delegate = self
-            let nav = UINavigationController(rootViewController: loginVC)
-            nav.modalPresentationStyle = .fullScreen
-            self?.present(nav, animated: true)
+            self?.goToLogin(loginVM)
         }
     }
     
     //MARK: - Helpers
     private func configureViewControllers(with user: User) {
         let friendListVM = FriendListViewModel(user: user)
+        let friendListVC = FriendListViewController(viewModel: friendListVM)
+        friendListVC.delegate = self
+        
         let friends = templateNavigationController(
             title: "친구",
             unselectedImage: UIImage(systemName: "person"),
             selectedImage: UIImage(systemName: "person.fill"),
-            rootViewController: FriendListViewController(viewModel: friendListVM)
+            rootViewController: friendListVC
         )
         let chats = templateNavigationController(
             title: "채팅",
@@ -66,7 +65,7 @@ final class MainTabViewController: UITabBarController {
         tabBar.backgroundColor = .white
     }
     
-    func templateNavigationController(
+    private func templateNavigationController(
         title: String,
         unselectedImage: UIImage?,
         selectedImage: UIImage?,
@@ -86,6 +85,15 @@ final class MainTabViewController: UITabBarController {
         rootViewController.navigationItem.title = title
         return nav
     }
+    
+    private func goToLogin(_ vm: LoginViewModel) {
+        let loginVC = LoginViewController(viewModel: vm)
+        loginVC.delegate = self
+        let nav = UINavigationController(rootViewController: loginVC)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
+    }
+    
 }
 
 //MARK: - AuthResultDelegate
@@ -96,5 +104,15 @@ extension MainTabViewController: AuthResultDelegate {
         viewModel.user = user
         configureViewControllers(with: user)
         print("DEBUG login user: \(user)")
+        UserDefaults.standard.setValue(user.id, forKey: "loginID") // 로그인 정보 저장
+    }
+}
+
+//MARK: - FriendListViewControllerDelegate
+extension MainTabViewController: FriendListViewControllerDelegate {
+    // 로그아웃
+    func logout() {
+        UserDefaults.standard.removeObject(forKey: "loginID") // 로그인 정보 삭제
+        goToLogin(viewModel.makeLoginViewModel())
     }
 }

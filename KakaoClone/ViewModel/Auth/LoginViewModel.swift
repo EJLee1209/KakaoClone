@@ -77,9 +77,6 @@ final class LoginViewModel {
         authService.signIn(id: id, password: password)
             .subscribe { [weak self] response in
                 self?.state.accept(.success(response))
-                guard let user = response.data else { return }
-                
-                UserDefaults.standard.setValue(user.id, forKey: "loginID") // 로그인 정보 저장
             } onError: { [weak self] error in
                 if let apiError = error as? APIError {
                     self?.state.accept(.failed(apiError.customDescription))
