@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848432AEBA28E0020F848 /* FriendListViewController.swift */; };
+		CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848452AEBA3050020F848 /* MainTabViewController.swift */; };
+		CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */; };
 		CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4AE2AEA968900F82081 /* UIViewController.swift */; };
 		CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */; };
 		CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B32AEA9FA300F82081 /* APIState.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF1848432AEBA28E0020F848 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		CF1848452AEBA3050020F848 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		CFACC4AE2AEA968900F82081 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		CFACC4B32AEA9FA300F82081 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
@@ -81,6 +87,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF1848412AEB9A010020F848 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B15E2AEA4755003CC800 /* LoginViewController.swift */,
+				CFF8B1622AEA476D003CC800 /* SignUpViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CF1848422AEB9A0D0020F848 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CFF8B17C2AEA5431003CC800 /* LoginViewModel.swift */,
+				CFF8B1832AEA71CC003CC800 /* SignUpViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		CFACC4B02AEA98D600F82081 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,8 +158,7 @@
 		CFF8B15A2AEA46FA003CC800 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CFF8B17C2AEA5431003CC800 /* LoginViewModel.swift */,
-				CFF8B1832AEA71CC003CC800 /* SignUpViewModel.swift */,
+				CF1848422AEB9A0D0020F848 /* Auth */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -143,9 +166,11 @@
 		CFF8B15B2AEA46FF003CC800 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CFF8B15E2AEA4755003CC800 /* LoginViewController.swift */,
-				CFF8B1622AEA476D003CC800 /* SignUpViewController.swift */,
+				CF1848412AEB9A010020F848 /* Auth */,
 				CFACC4B02AEA98D600F82081 /* Custom */,
+				CF1848432AEBA28E0020F848 /* FriendListViewController.swift */,
+				CF1848452AEBA3050020F848 /* MainTabViewController.swift */,
+				CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,7 +300,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */,
 				CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */,
+				CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */,
 				CFF8B18C2AEA7FC4003CC800 /* AuthResponse.swift in Sources */,
 				CFF8B1662AEA47A9003CC800 /* Constants.swift in Sources */,
 				CFF8B1842AEA71CC003CC800 /* SignUpViewModel.swift in Sources */,
@@ -291,6 +318,7 @@
 				CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */,
 				CFF8B1862AEA78F9003CC800 /* User.swift in Sources */,
 				CFF8B1482AEA46B4003CC800 /* SceneDelegate.swift in Sources */,
+				CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

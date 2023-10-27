@@ -17,4 +17,11 @@ struct User: Codable{
         guard let imagePath = imagePath else { return nil }
         return URL(string: "\(Constants.baseURL)/\(imagePath)")
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case password
+        case imagePath = "profile_image_path"
+    }
 }

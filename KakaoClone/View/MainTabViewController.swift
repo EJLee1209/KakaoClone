@@ -7,23 +7,49 @@
 
 import UIKit
 
-class MainTabViewController: UIViewController {
+class MainTabViewController: UITabBarController {
+    //MARK: - Properties
 
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureViewControllers()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Helpers
+    private func configureViewControllers() {
+        
+        let friends = templateNavigationController(
+            unselectedImage: UIImage(systemName: "person"),
+            selectedImage: UIImage(systemName: "person.fill"),
+            rootViewController: FriendListViewController()
+        )
+        let chats = templateNavigationController(
+            unselectedImage: UIImage(systemName: "bubble"),
+            selectedImage: UIImage(systemName: "bubble.fill"),
+            rootViewController: FriendListViewController()
+        )
+        
+        viewControllers = [friends, chats]
+        tabBar.tintColor = .black
+        tabBar.backgroundColor = .white
     }
-    */
+    
+    func templateNavigationController(unselectedImage: UIImage?, selectedImage: UIImage?, rootViewController: UIViewController) -> UINavigationController {
+        // 탭바의 뷰컨트롤러로 들어갈 UINavigationController를 생성 -> 탭바의 컨트롤러 각각은 UINavigationController임
+        let nav = UINavigationController(rootViewController: rootViewController)
+        nav.tabBarItem.image = unselectedImage
+        nav.tabBarItem.selectedImage = selectedImage
+        nav.navigationBar.tintColor = .black
+        // UINavigationBarAppearance를 설정해야 NavBar의 background를 지정할 수 있음
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        nav.navigationBar.standardAppearance = appearance
+        nav.navigationBar.scrollEdgeAppearance = appearance
+        return nav
+    }
+
 
 }

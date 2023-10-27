@@ -10,99 +10,79 @@ import UIKit
 import Alamofire
 
 final class AuthService {
-    typealias AuthCompletionHandlerType = (Result<AuthResponse, APIError>) -> Void
     
     func signIn(
         id: String,
-        password: String,
-        completion: @escaping AuthCompletionHandlerType
-    ) {
+        password: String
+    ) -> Observable<AuthResponse> {
         let header : HTTPHeaders = ["Content-Type": "application/json"]
-        AF.request(
-            Constants.signInEndPoint,
-            method: .post,
-            parameters: ["id": id, "password": password],
-            encoding: JSONEncoding.default,
-            headers: header
-        )
-        .responseData { dataResponse in
-            guard let statusCode = dataResponse.response?.statusCode else {
-                completion(.failure(.requestFailed(description: "서버 요청 실패")))
-                return
+        
+        return Observable<AuthResponse>.create { observer in
+            let request = AF.request(
+                Constants.signInEndPoint,
+                method: .post,
+                parameters: ["id": id, "password": password],
+                encoding: JSONEncoding.default,
+                headers: header
+            ).responseData(completionHandler: self.authCompletion(observer: observer))
+            
+            return Disposables.create {
+                request.cancel() // Observable이 dispose될 때, 요청 취소
             }
+        }
+    }
+
+    func signUp(
+        user: User,
+        image: UIImage?
+    ) -> Observable<AuthResponse> {
+        let header: HTTPHeaders = ["Content-Type": "multipart/form-data"]
+        
+        return Observable<AuthResponse>.create { observer in
+            let request = AF.upload(multipartFormData: { multipartFromData in
+                multipartFromData.append(Data(user.id.utf8), withName: "id")
+                multipartFromData.append(Data(user.name.utf8), withName: "name")
+                multipartFromData.append(Data(user.password.utf8), withName: "password")
                 
-            guard let data = dataResponse.data else {
-                completion(.failure(.invalidData))
-                return
-            }
-                
-            switch statusCode {
-            case 200, 400, 500:
-                do {
-                    let authResponse = try JSONDecoder().decode(AuthResponse.self, from: data)
-                    if statusCode == 200 {
-                        completion(.success(authResponse))
-                    } else {
-                        completion(.failure(.requestFailed(description: authResponse.message)))
-                    }
-                } catch {
-                    completion(.failure(.unknownError(error: error)))
+                if let image {
+                    multipartFromData.append(
+                        image.pngData() ?? Data(),
+                        withName: "image",
+                        fileName: "image/png",
+                        mimeType: "image/png"
+                    )
                 }
-            default:
-                completion(.failure(.invalidStatusCode(statusCode: statusCode)))
-                return
+                
+            }, to: Constants.signUpEndPoint, method: .post, headers: header)
+                .responseData(completionHandler: self.authCompletion(observer: observer))
+            
+            return Disposables.create {
+                request.cancel()
             }
         }
     }
     
-    func signUp(
-        user: User,
-        image: UIImage?,
-        completion: @escaping AuthCompletionHandlerType
-    ) {
-        let header: HTTPHeaders = ["Content-Type": "multipart/form-data"]
-        
-        AF.upload(multipartFormData: { multipartFromData in
-            multipartFromData.append(Data(user.id.utf8), withName: "id")
-            multipartFromData.append(Data(user.name.utf8), withName: "name")
-            multipartFromData.append(Data(user.password.utf8), withName: "password")
-            
-            if let image {
-                multipartFromData.append(
-                    image.pngData() ?? Data(),
-                    withName: "image",
-                    fileName: "image/png",
-                    mimeType: "image/png"
-                )
+    func authCompletion(observer: AnyObserver<AuthResponse>) -> ((AFDataResponse<Data>) -> Void) {
+        return { dataResponse in
+            guard let statusCode = dataResponse.response?.statusCode else {
+                observer.onError(APIError.requestFailed(description: "서버 요청 실패"))
+                return
             }
-            
-        }, to: Constants.signUpEndPoint, method: .post, headers: header)
-        .responseData { response in
-            guard let statusCode = response.response?.statusCode else {
-                completion(.failure(.requestFailed(description: "서버 요청 실패")))
+                
+            guard let data = dataResponse.data else {
+                observer.onError(APIError.invalidData)
                 return
             }
             
-            guard let data = response.data else {
-                completion(.failure(.invalidData))
-                return
-            }
-            
-            switch statusCode {
-            case 200, 400, 500:
-                do {
-                    let authResponse = try JSONDecoder().decode(AuthResponse.self, from: data)
-                    if statusCode == 200 {
-                        completion(.success(authResponse))
-                    } else {
-                        completion(.failure(.requestFailed(description: authResponse.message)))
-                    }
-                } catch {
-                    completion(.failure(.unknownError(error: error)))
+            do {
+                let authResponse = try JSONDecoder().decode(AuthResponse.self, from: data)
+                if statusCode == 200 {
+                    observer.onNext(authResponse)
+                } else {
+                    observer.onError(APIError.requestFailed(description: authResponse.message))
                 }
-            default:
-                completion(.failure(.invalidStatusCode(statusCode: statusCode)))
-                return
+            } catch {
+                observer.onError(APIError.jsonParsingFailure)
             }
         }
     }

@@ -74,15 +74,16 @@ final class LoginViewModel {
     private func requestSignIn() {
         state.accept(.loading)
         
-        authService.signIn(id: id, password: password) { [weak self] result in
-            switch result {
-            case .success(let response):
+        authService.signIn(id: id, password: password)
+            .subscribe { [weak self] response in
                 self?.state.accept(.success(response))
-                break
-            case .failure(let error):
-                self?.state.accept(.failed(error.customDescription))
-            }
-        }
+            } onError: { [weak self] error in
+                if let apiError = error as? APIError {
+                    self?.state.accept(.failed(apiError.customDescription))
+                } else{
+                    self?.state.accept(.failed("알 수 없는 오류가 발생했습니다"))
+                }
+            }.disposed(by: bag)
     }
     
     func makeSignUpViewModel() -> SignUpViewModel {

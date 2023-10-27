@@ -16,12 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let authService = AuthService()
-        let loginVM = LoginViewModel(authService: authService)
-        let vc = LoginViewController(viewModel: loginVM)
-        let nav = UINavigationController(rootViewController: vc)
+//        let authService = AuthService()
+//        let loginVM = LoginViewModel(authService: authService)
+//        let vc = LoginViewController(viewModel: loginVM)
+//        let nav = UINavigationController(rootViewController: vc)
         
-        window.rootViewController = nav
+        let mainTab = MainTabViewController()
+        
+        window.rootViewController = mainTab
         self.window = window
         self.window?.makeKeyAndVisible()
     }

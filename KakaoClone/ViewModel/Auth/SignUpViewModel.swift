@@ -81,13 +81,15 @@ final class SignUpViewModel {
         state.accept(.loading)
         let user = User(id: id, name: name, password: password)
         
-        authService.signUp(user: user, image: profileImage) { [weak self] result in
-            switch result {
-            case .success(let response):
+        authService.signUp(user: user, image: profileImage)
+            .subscribe { [weak self] response in
                 self?.state.accept(.success(response))
-            case .failure(let error):
-                self?.state.accept(.failed(error.customDescription))
-            }
-        }
+            } onError: { [weak self] error in
+                if let apiError = error as? APIError {
+                    self?.state.accept(.failed(apiError.customDescription))
+                } else{
+                    self?.state.accept(.failed("알 수 없는 오류가 발생했습니다"))
+                }
+            }.disposed(by: bag)
     }
 }
