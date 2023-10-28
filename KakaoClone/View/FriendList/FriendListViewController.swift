@@ -147,6 +147,19 @@ extension FriendListViewController: UITableViewDataSource {
 extension FriendListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let vm: FriendDetailViewModel
+        
+        switch viewModel.dataSource[indexPath.section] {
+        case .friendsSection(let friends):
+            vm = .init(user: viewModel.user, selectedFriend: friends[indexPath.row])
+        case .userProfileSection(let user):
+            vm = .init(user: user, selectedFriend: nil)
+        }
+        
+        let vc = FriendDetailViewController(viewModel: vm)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
 }
