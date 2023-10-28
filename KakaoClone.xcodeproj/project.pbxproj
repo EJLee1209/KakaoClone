@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17A2AECC8F800D0F56B /* FriendCard.swift */; };
 		CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848432AEBA28E0020F848 /* FriendListViewController.swift */; };
 		CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848452AEBA3050020F848 /* MainTabViewController.swift */; };
 		CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */; };
 		CF18484A2AEBA7D00020F848 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848492AEBA7D00020F848 /* MainViewModel.swift */; };
-		CF1848502AEBB80E0020F848 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18484F2AEBB80E0020F848 /* UserProfileHeader.swift */; };
 		CF1848522AEBBA540020F848 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848512AEBBA540020F848 /* FriendListViewModel.swift */; };
 		CF1848542AEBBFD70020F848 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848532AEBBFD70020F848 /* FriendCell.swift */; };
 		CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848552AEBC50C0020F848 /* FriendListSection.swift */; };
 		CF92D5F02AECB740003681EB /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */; };
+		CF92D5F22AECC207003681EB /* AddFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */; };
 		CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4AE2AEA968900F82081 /* UIViewController.swift */; };
 		CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */; };
 		CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B32AEA9FA300F82081 /* APIState.swift */; };
@@ -47,15 +48,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF04D17A2AECC8F800D0F56B /* FriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCard.swift; sourceTree = "<group>"; };
 		CF1848432AEBA28E0020F848 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		CF1848452AEBA3050020F848 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		CF1848492AEBA7D00020F848 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		CF18484F2AEBB80E0020F848 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		CF1848512AEBBA540020F848 /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
 		CF1848532AEBBFD70020F848 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		CF1848552AEBC50C0020F848 /* FriendListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListSection.swift; sourceTree = "<group>"; };
 		CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewModel.swift; sourceTree = "<group>"; };
 		CFACC4AE2AEA968900F82081 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		CFACC4B32AEA9FA300F82081 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
@@ -121,9 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				CF1848432AEBA28E0020F848 /* FriendListViewController.swift */,
-				CF18484F2AEBB80E0020F848 /* UserProfileHeader.swift */,
 				CF1848532AEBBFD70020F848 /* FriendCell.swift */,
 				CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */,
+				CF04D17A2AECC8F800D0F56B /* FriendCard.swift */,
 			);
 			path = FriendList;
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 				CF1848422AEB9A0D0020F848 /* Auth */,
 				CF1848492AEBA7D00020F848 /* MainViewModel.swift */,
 				CF1848512AEBBA540020F848 /* FriendListViewModel.swift */,
+				CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -346,7 +349,8 @@
 				CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */,
 				CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */,
 				CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */,
-				CF1848502AEBB80E0020F848 /* UserProfileHeader.swift in Sources */,
+				CF92D5F22AECC207003681EB /* AddFriendViewModel.swift in Sources */,
+				CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */,
 				CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */,
 				CFF8B1882AEA7DDD003CC800 /* AuthService.swift in Sources */,
 				CFF8B1462AEA46B4003CC800 /* AppDelegate.swift in Sources */,

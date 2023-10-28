@@ -14,21 +14,15 @@ final class FriendListViewModel {
     
     let user: User
     let dataSource: [FriendListSection]
+    let authService: AuthService
     
-    struct Input {
-        
-    }
     
-    struct Ouput {
-        
-    }
-    
-    init(user: User) {
+    init(user: User, authService: AuthService) {
         self.user = user
+        self.authService = authService
         self.dataSource = [
             .userProfileSection(user: user),
             .friendsSection(users: [])
         ]
     }
-    
 }

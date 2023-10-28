@@ -91,7 +91,8 @@ final class FriendListViewController: UIViewController {
     }
     
     @objc func handleAddFriend() {
-        let vc = AddFriendViewController(viewModel: self.viewModel)
+        let vm = AddFriendViewModel(user: viewModel.user, authService: viewModel.authService)
+        let vc = AddFriendViewController(viewModel: vm)
         present(vc, animated: true)
     }
 }

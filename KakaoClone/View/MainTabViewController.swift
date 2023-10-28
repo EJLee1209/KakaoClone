@@ -51,7 +51,7 @@ final class MainTabViewController: UITabBarController {
     
     //MARK: - Helpers
     private func configureViewControllers(with user: User) {
-        let friendListVM = FriendListViewModel(user: user)
+        let friendListVM = FriendListViewModel(user: user, authService: viewModel.authService)
         let friendListVC = FriendListViewController(viewModel: friendListVM)
         friendListVC.delegate = self
         

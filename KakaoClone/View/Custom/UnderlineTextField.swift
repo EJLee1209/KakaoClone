@@ -127,5 +127,4 @@ extension UnderlineTextField: UITextFieldDelegate {
         let newLength = text.count + string.count - range.length
         return newLength <= self.maxLength // 길이 제한
     }
-    
 }

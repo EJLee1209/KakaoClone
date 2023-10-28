@@ -19,15 +19,16 @@ final class AddFriendViewController: UIViewController {
         return label
     }()
     
-    private let idTextField: UnderlineTextField = {
+    private lazy var idTextField: UnderlineTextField = {
         let tf = UnderlineTextField(rightViewType: .textCounter, maxLength: 20)
         tf.textField.placeholder = "친구 카카오톡 ID"
         tf.textField.keyboardType = .emailAddress
-        tf.textField.returnKeyType = .done
+        tf.textField.returnKeyType = .search
         tf.textField.autocapitalizationType = .none
         tf.textField.autocorrectionType = .no
         tf.textField.spellCheckingType = .no
         tf.textField.rightViewMode = .always
+        tf.textField.delegate = self
         return tf
     }()
     
@@ -54,18 +55,27 @@ final class AddFriendViewController: UIViewController {
         return sv
     }()
     
+    private lazy var friendCardView: FriendCard = {
+        let card = FriendCard()
+        card.isHidden = true
+        return card
+    }()
+    
     private lazy var vStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [titleLabel, idTextField, hStackView])
+        let sv = UIStackView(arrangedSubviews: [titleLabel, idTextField, hStackView, friendCardView])
         sv.axis = .vertical
         sv.spacing = 18
         return sv
     }()
     
-    private let viewModel: FriendListViewModel
+    
+    
+    private let viewModel: AddFriendViewModel
+    private let bag = DisposeBag()
     
     //MARK: - LifeCycle
     
-    init(viewModel: FriendListViewModel) {
+    init(viewModel: AddFriendViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -91,8 +101,34 @@ final class AddFriendViewController: UIViewController {
     }
     
     private func bind() {
-        
+        let input = AddFriendViewModel.Input(idObservable: idTextField.text.asObservable())
+        let output = viewModel.transform(input: input)
+        output.searchFriendState
+            .bind { [weak self] state in
+                switch state {
+                case .failed(let message):
+                    print("DEBUG search failed: \(message)")
+                    self?.friendCardView.isHidden = true
+                case .success(let response):
+                    guard let user = response.data else { return }
+                    guard let vm = self?.viewModel else { return }
+                    self?.friendCardView.isHidden = false
+                    self?.friendCardView.bind(user: user, isMine: user.id == vm.user.id)
+                case .loading:
+                    print("DEBUG searching...")
+                    self?.friendCardView.isHidden = true
+                default:
+                    break
+                }
+            }.disposed(by: bag)
     }
+}
 
-
+//MARK: - UITextFieldDelegate
+extension AddFriendViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // 친구 검색
+        viewModel.search()
+        return true
+    }
 }
