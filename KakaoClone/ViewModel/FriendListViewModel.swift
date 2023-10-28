@@ -7,15 +7,23 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
-
-
+protocol FriendListViewModelDelegate: AnyObject {
+    func updateDataSource(_ dataSource: [FriendListSection])
+}
 final class FriendListViewModel {
     
+    weak var delegate: FriendListViewModelDelegate?
     let user: User
-    let dataSource: [FriendListSection]
+    var dataSource: [FriendListSection] {
+        didSet {
+            delegate?.updateDataSource(dataSource)
+        }
+    }
     let authService: AuthService
     
+    private let bag = DisposeBag()
     
     init(user: User, authService: AuthService) {
         self.user = user
@@ -24,5 +32,16 @@ final class FriendListViewModel {
             .userProfileSection(user: user),
             .friendsSection(users: [])
         ]
+        
+        fetchFriends()
     }
+    
+    func fetchFriends() {
+        authService.fetchFriends(id: user.id)
+            .bind { [weak self] response in
+                guard let friends = response.data else { return }
+                self?.dataSource[1] = .friendsSection(users: friends)
+            }.disposed(by: bag)
+    }
+    
 }

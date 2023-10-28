@@ -33,6 +33,7 @@ final class FriendListViewController: UIViewController {
     init(viewModel: FriendListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -53,8 +54,6 @@ final class FriendListViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        
     }
     
     private func setupNavBarItems() {
@@ -93,6 +92,7 @@ final class FriendListViewController: UIViewController {
     @objc func handleAddFriend() {
         let vm = AddFriendViewModel(user: viewModel.user, authService: viewModel.authService)
         let vc = AddFriendViewController(viewModel: vm)
+        vc.delegate = self
         present(vc, animated: true)
     }
 }
@@ -147,3 +147,16 @@ extension FriendListViewController: UITableViewDelegate {
     
 }
 
+//MARK: - FriendListViewModelDelegate
+extension FriendListViewController: FriendListViewModelDelegate {
+    func updateDataSource(_ dataSource: [FriendListSection]) {
+        tableView.reloadData()
+    }
+}
+
+//MARK: - AddFriendDelegate
+extension FriendListViewController: AddFriendDelegate {
+    func updateFriends() {
+        viewModel.fetchFriends()
+    }
+}

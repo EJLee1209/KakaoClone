@@ -73,7 +73,7 @@ final class FriendCell: UITableViewCell {
             make.edges.equalToSuperview().inset(10)
         }
         profileImageView.snp.makeConstraints { make in
-            make.size.equalTo(30)
+            make.size.equalTo(50)
         }
     }
     
@@ -86,6 +86,10 @@ final class FriendCell: UITableViewCell {
         if isMine {
             profileImageView.snp.updateConstraints { make in
                 make.size.equalTo(80)
+            }
+        } else {
+            profileImageView.snp.updateConstraints { make in
+                make.size.equalTo(50)
             }
         }
     }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FriendCardDelegate: AnyObject {
+    func buttonTap()
+}
+
 final class FriendCard: UIView {
     
     //MARK: - Properties
@@ -26,7 +30,7 @@ final class FriendCard: UIView {
         return label
     }()
     
-    private let addFriendButton: UIButton = {
+    private lazy var addFriendButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("친구 추가", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -34,6 +38,7 @@ final class FriendCard: UIView {
         button.layer.cornerRadius = 8
         button.backgroundColor = .systemYellow
         button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         return button
     }()
     
@@ -44,6 +49,7 @@ final class FriendCard: UIView {
         return sv
     }()
     
+    weak var delegate: FriendCardDelegate?
     
     //MARK: - LifeCycle
     override init(frame: CGRect) {
@@ -83,5 +89,11 @@ final class FriendCard: UIView {
         nameLabel.text = user.name
         
         addFriendButton.isHidden = isMine
+    }
+    
+    //MARK: - Actions
+    
+    @objc func handleTap() {
+        delegate?.buttonTap()
     }
 }

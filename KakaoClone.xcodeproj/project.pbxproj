@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17A2AECC8F800D0F56B /* FriendCard.swift */; };
+		CF04D17D2AECDBDF00D0F56B /* FriendsResopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */; };
 		CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848432AEBA28E0020F848 /* FriendListViewController.swift */; };
 		CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848452AEBA3050020F848 /* MainTabViewController.swift */; };
 		CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		CF04D17A2AECC8F800D0F56B /* FriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCard.swift; sourceTree = "<group>"; };
+		CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResopnse.swift; sourceTree = "<group>"; };
 		CF1848432AEBA28E0020F848 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		CF1848452AEBA3050020F848 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				CFF8B1852AEA78F9003CC800 /* User.swift */,
 				CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */,
 				CF1848552AEBC50C0020F848 /* FriendListSection.swift */,
+				CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				CFF8B1632AEA476D003CC800 /* SignUpViewController.swift in Sources */,
 				CF18484A2AEBA7D00020F848 /* MainViewModel.swift in Sources */,
 				CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */,
+				CF04D17D2AECDBDF00D0F56B /* FriendsResopnse.swift in Sources */,
 				CFF8B1862AEA78F9003CC800 /* User.swift in Sources */,
 				CF92D5F02AECB740003681EB /* AddFriendViewController.swift in Sources */,
 				CFF8B1482AEA46B4003CC800 /* SceneDelegate.swift in Sources */,

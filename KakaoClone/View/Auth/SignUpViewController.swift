@@ -185,6 +185,7 @@ final class SignUpViewController: UIViewController {
     private func showAlert(state: APIState) {
         switch state {
         case .success(let response):
+            let response = response as! AuthResponse
             let action = UIAlertAction(title: "확인", style: .default) {[weak self] _ in
                 self?.navigationController?.popViewController(animated: true)
             }

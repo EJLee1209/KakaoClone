@@ -10,6 +10,6 @@ import Foundation
 enum APIState {
     case none
     case loading
-    case success(AuthResponse)
+    case success(Decodable)
     case failed(String)
 }

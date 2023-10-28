@@ -12,6 +12,41 @@ import Alamofire
 
 final class AuthService {
     
+    func addFriend(from_id: String, to_id: String) -> Observable<Bool> {
+        let header : HTTPHeaders = ["Content-Type": "application/json"]
+        
+        return Observable<Bool>.create { observer in
+            let request = AF.request(
+                Constants.addFriendEndPoint,
+                method: .post,
+                parameters: ["from_id": from_id, "to_id": to_id],
+                encoding: JSONEncoding.default,
+                headers: header
+            ).responseData(completionHandler: self.authCompletion(observer: observer))
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
+    
+    func fetchFriends(id: String) -> Observable<FriendsResopnse> {
+        let header : HTTPHeaders = ["Content-Type": "application/json"]
+        
+        return Observable<FriendsResopnse>.create { observer in
+            let request = AF.request(
+                "\(Constants.fetchFrinedsEndPoint)\(id)",
+                method: .get,
+                encoding: JSONEncoding.default,
+                headers: header
+            ).responseData(completionHandler: self.authCompletion(observer: observer))
+            
+            return Disposables.create {
+                request.cancel() // Observable이 dispose될 때, 요청 취소
+            }
+        }
+    }
+    
     func fetchUser(id: String) -> Observable<AuthResponse> {
         let header : HTTPHeaders = ["Content-Type": "application/json"]
         
@@ -80,7 +115,7 @@ final class AuthService {
         }
     }
     
-    func authCompletion(observer: AnyObserver<AuthResponse>) -> ((AFDataResponse<Data>) -> Void) {
+    func authCompletion<T: Codable>(observer: AnyObserver<T>) -> ((AFDataResponse<Data>) -> Void) {
         return { dataResponse in
             guard let statusCode = dataResponse.response?.statusCode else {
                 observer.onError(APIError.requestFailed(description: "서버 요청 실패"))
@@ -93,11 +128,18 @@ final class AuthService {
             }
             
             do {
-                let authResponse = try JSONDecoder().decode(AuthResponse.self, from: data)
+                let response = try JSONDecoder().decode(T.self, from: data)
                 if statusCode == 200 {
-                    observer.onNext(authResponse)
+                    observer.onNext(response)
                 } else {
-                    observer.onError(APIError.requestFailed(description: authResponse.message))
+                    if let response =  response as? AuthResponse {
+                        observer.onError(APIError.requestFailed(description: response.message))
+                    }
+                    if let response = response as? FriendsResopnse {
+                        observer.onError(APIError.requestFailed(description: response.message))
+                    }
+                    
+                    observer.onError(APIError.invalidStatusCode(statusCode: statusCode))
                 }
             } catch {
                 observer.onError(APIError.jsonParsingFailure)

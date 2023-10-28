@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol AddFriendDelegate: AnyObject {
+    func updateFriends()
+}
+
 final class AddFriendViewController: UIViewController {
     //MARK: - Properties
     private let titleLabel: UILabel = {
@@ -58,20 +62,30 @@ final class AddFriendViewController: UIViewController {
     private lazy var friendCardView: FriendCard = {
         let card = FriendCard()
         card.isHidden = true
+        card.delegate = self
         return card
     }()
     
+    private let noResultLabel: UILabel = {
+        let label = UILabel()
+        label.text = "검색 결과가 없습니다."
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .systemGray
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
+    
     private lazy var vStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [titleLabel, idTextField, hStackView, friendCardView])
+        let sv = UIStackView(arrangedSubviews: [titleLabel, idTextField, hStackView, noResultLabel, friendCardView])
         sv.axis = .vertical
         sv.spacing = 18
         return sv
     }()
     
-    
-    
     private let viewModel: AddFriendViewModel
     private let bag = DisposeBag()
+    weak var delegate: AddFriendDelegate?
     
     //MARK: - LifeCycle
     
@@ -109,18 +123,42 @@ final class AddFriendViewController: UIViewController {
                 case .failed(let message):
                     print("DEBUG search failed: \(message)")
                     self?.friendCardView.isHidden = true
+                    self?.noResultLabel.isHidden = false
                 case .success(let response):
+                    let response = response as! AuthResponse
                     guard let user = response.data else { return }
                     guard let vm = self?.viewModel else { return }
                     self?.friendCardView.isHidden = false
+                    self?.noResultLabel.isHidden = true
                     self?.friendCardView.bind(user: user, isMine: user.id == vm.user.id)
                 case .loading:
                     print("DEBUG searching...")
                     self?.friendCardView.isHidden = true
+                    self?.noResultLabel.isHidden = true
                 default:
                     break
                 }
             }.disposed(by: bag)
+        
+        output.addFriendState
+            .subscribe { [weak self] state in
+                switch state {
+                case .failed(let message):
+                    print("DEBUG search failed: \(message)")
+                case .success(let response):
+                    let response = response as! Bool
+                    print("DEBUG add friend \(response)")
+                    self?.delegate?.updateFriends()
+                case .loading:
+                    print("DEBUG add friend...")
+                    
+                default:
+                    break
+                }
+            } onError: { error in
+                
+            }.disposed(by: bag)
+
     }
 }
 
@@ -130,5 +168,12 @@ extension AddFriendViewController: UITextFieldDelegate {
         // 친구 검색
         viewModel.search()
         return true
+    }
+}
+
+extension AddFriendViewController: FriendCardDelegate {
+    func buttonTap() {
+        // 친구 추가
+        viewModel.addFriend()
     }
 }

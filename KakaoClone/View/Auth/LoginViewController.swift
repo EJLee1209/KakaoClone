@@ -208,6 +208,7 @@ final class LoginViewController: UIViewController {
     private func showAlert(state: APIState) {
         switch state {
         case .success(let response):
+            let response = response as! AuthResponse
             if response.status {
                 // 로그인 성공
                 guard let user = response.data else {
