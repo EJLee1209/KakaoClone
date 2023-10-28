@@ -64,7 +64,15 @@ final class FriendListViewController: UIViewController {
             target: self,
             action: #selector(handleLogout)
         )
+        let addFriendButton = UIBarButtonItem(
+            image: UIImage(systemName: "person.badge.plus"),
+            style: .plain,
+            target: self,
+            action: #selector(handleAddFriend)
+        )
+        
         navigationItem.setLeftBarButton(logoutButton, animated: true)
+        navigationItem.setRightBarButton(addFriendButton, animated: true)
     }
     
     //MARK: - Actions
@@ -80,6 +88,11 @@ final class FriendListViewController: UIViewController {
             message: "정말로 로그아웃 하시겠습니까?",
             actions: [positiveAction, negativeAction]
         )
+    }
+    
+    @objc func handleAddFriend() {
+        let vc = AddFriendViewController(viewModel: self.viewModel)
+        present(vc, animated: true)
     }
 }
 

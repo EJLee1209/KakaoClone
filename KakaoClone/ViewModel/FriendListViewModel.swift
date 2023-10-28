@@ -15,6 +15,14 @@ final class FriendListViewModel {
     let user: User
     let dataSource: [FriendListSection]
     
+    struct Input {
+        
+    }
+    
+    struct Ouput {
+        
+    }
+    
     init(user: User) {
         self.user = user
         self.dataSource = [

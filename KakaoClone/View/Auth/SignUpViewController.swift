@@ -23,7 +23,7 @@ final class SignUpViewController: UIViewController {
     }()
     
     private let idTextField: UnderlineTextField = {
-        let tf = UnderlineTextField(rightViewType: .clearButton)
+        let tf = UnderlineTextField(rightViewType: .clearButton, maxLength: 20)
         tf.textField.placeholder = "카카오 아이디"
         tf.textField.keyboardType = .emailAddress
         tf.textField.returnKeyType = .next
@@ -34,7 +34,7 @@ final class SignUpViewController: UIViewController {
     }()
     
     private let nameTextField: UnderlineTextField = {
-        let tf = UnderlineTextField(rightViewType: .clearButton)
+        let tf = UnderlineTextField(rightViewType: .clearButton, maxLength: 20)
         tf.textField.placeholder = "이름"
         tf.textField.keyboardType = .emailAddress
         tf.textField.returnKeyType = .next
@@ -45,7 +45,7 @@ final class SignUpViewController: UIViewController {
     }()
         
     private let passwordTextField: UnderlineTextField = {
-        let tf = UnderlineTextField(rightViewType: .textVisibilityButton)
+        let tf = UnderlineTextField(rightViewType: .textVisibilityButton, maxLength: 32)
         tf.textField.placeholder = "비밀번호(8 ~ 32자)"
         tf.textField.returnKeyType = .next
         tf.textField.autocapitalizationType = .none
@@ -57,7 +57,7 @@ final class SignUpViewController: UIViewController {
     }()
     
     private let passwordConfirmTextField: UnderlineTextField = {
-        let tf = UnderlineTextField(rightViewType: .textVisibilityButton)
+        let tf = UnderlineTextField(rightViewType: .textVisibilityButton, maxLength: 32)
         tf.textField.placeholder = "비밀번호 확인"
         tf.textField.returnKeyType = .next
         tf.textField.autocapitalizationType = .none
@@ -159,11 +159,11 @@ final class SignUpViewController: UIViewController {
     
     private func bind() {
         let input = SignUpViewModel.Input(
-            idObservable: idTextField.textField.rx.text,
-            nameObservable: nameTextField.textField.rx.text,
-            passwordObservable: passwordTextField.textField.rx.text,
-            passwordConfirmObservable: passwordConfirmTextField.textField.rx.text,
-            registerButtonTap: registerButton.rx.tap
+            idObservable: idTextField.text.asObservable(),
+            nameObservable: nameTextField.text.asObservable(),
+            passwordObservable: passwordTextField.text.asObservable(),
+            passwordConfirmObservable: passwordConfirmTextField.text.asObservable(),
+            registerButtonTap: registerButton.rx.tap.asObservable()
         )
         
         let output = viewModel.transform(input: input)

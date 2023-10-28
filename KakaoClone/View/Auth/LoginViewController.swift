@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController {
     }()
     
     private let idTextField: UnderlineTextField = {
-        let tf = UnderlineTextField(rightViewType: .clearButton)
+        let tf = UnderlineTextField(rightViewType: .clearButton, maxLength: 20)
         tf.textField.placeholder = "카카오 아이디"
         tf.textField.keyboardType = .emailAddress
         tf.textField.returnKeyType = .next
@@ -36,7 +36,7 @@ final class LoginViewController: UIViewController {
     }()
         
     private let passwordTextField: UnderlineTextField = {
-        let tf = UnderlineTextField(rightViewType: .textVisibilityButton)
+        let tf = UnderlineTextField(rightViewType: .textVisibilityButton, maxLength: 32)
         tf.textField.placeholder = "비밀번호"
         tf.textField.returnKeyType = .done
         tf.textField.autocapitalizationType = .none
@@ -151,9 +151,9 @@ final class LoginViewController: UIViewController {
     
     private func bind() {
         let input = LoginViewModel.Input(
-            idObservable: idTextField.text,
-            passwordObservable: passwordTextField.text,
-            loginTap: loginButton.rx.tap
+            idObservable: idTextField.text.asObservable(),
+            passwordObservable: passwordTextField.text.asObservable(),
+            loginTap: loginButton.rx.tap.asObservable()
         )
         let output = viewModel.transform(input: input)
         
@@ -235,7 +235,6 @@ final class LoginViewController: UIViewController {
     }
     
     //MARK: - Actions
-    
     @objc private func handleRegisterButtonTapped() {
         let vc = SignUpViewController(viewModel: viewModel.makeSignUpViewModel())
         self.navigationController?.pushViewController(vc, animated: true)

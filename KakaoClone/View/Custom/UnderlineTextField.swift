@@ -12,6 +12,7 @@ import RxSwift
 enum RightViewType {
     case clearButton
     case textVisibilityButton
+    case textCounter
     case none
 }
 
@@ -33,13 +34,24 @@ final class UnderlineTextField: UIView {
         return button
     }()
     
+    private lazy var textCounter: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .systemGray2
+        label.text = "0/0"
+        return label
+    }()
+    
     private lazy var vStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [textField, divider1])
         sv.axis = .vertical
         sv.spacing = 15
-        
         return sv
     }()
+    
+    private let rightViewType: RightViewType
+    private let bag = DisposeBag()
+    let maxLength: Int
     
     var text: ControlProperty<String?> {
         return textField.rx.text
@@ -52,8 +64,15 @@ final class UnderlineTextField: UIView {
     
     
     //MARK: - LifeCycle
-    init(rightViewType: RightViewType) {
+    init(
+        rightViewType: RightViewType,
+        maxLength: Int
+    ) {
+        self.rightViewType = rightViewType
+        self.maxLength = maxLength
+        
         super.init(frame: .zero)
+        textField.delegate = self
         layout()
         
         switch rightViewType {
@@ -61,6 +80,14 @@ final class UnderlineTextField: UIView {
             textField.clearButtonMode = .whileEditing
         case .textVisibilityButton:
             textField.rightView = eyeButton
+        case .textCounter:
+            textField.rightView = textCounter
+            textField.rx.text
+                .bind { [weak self] text in
+                    guard let text = text, let maxLength = self?.maxLength else { return }
+                    self?.textCounter.text = "\(text.count)/\(maxLength)"
+                }
+                .disposed(by: bag)
         case .none:
             break
         }
@@ -89,4 +116,16 @@ final class UnderlineTextField: UIView {
         let eyeImage = textField.isSecureTextEntry ? UIImage(systemName: "eye.slash") : UIImage(systemName: "eye.fill")
         eyeButton.setImage(eyeImage, for: .normal)
     }
+}
+
+extension UnderlineTextField: UITextFieldDelegate {
+    
+    // UITextFieldDelegate 메서드 - 텍스트 입력이 변경될 때 호출됨
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        
+        let newLength = text.count + string.count - range.length
+        return newLength <= self.maxLength // 길이 제한
+    }
+    
 }

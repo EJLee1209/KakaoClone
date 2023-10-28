@@ -7,7 +7,7 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
+import RxRelay
 
 final class LoginViewModel {
     private let bag = DisposeBag()
@@ -24,9 +24,9 @@ final class LoginViewModel {
     
     //MARK: - Input
     struct Input {
-        let idObservable: ControlProperty<String?>
-        let passwordObservable: ControlProperty<String?>
-        let loginTap: ControlEvent<Void>
+        let idObservable: Observable<String?>
+        let passwordObservable: Observable<String?>
+        let loginTap: Observable<Void>
     }
     
     //MARK: - Output

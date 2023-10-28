@@ -7,7 +7,7 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
+import RxRelay
 import UIKit
 
 final class SignUpViewModel {
@@ -28,11 +28,11 @@ final class SignUpViewModel {
     
     //MARK: - Input
     struct Input {
-        var idObservable: ControlProperty<String?>
-        var nameObservable: ControlProperty<String?>
-        var passwordObservable: ControlProperty<String?>
-        var passwordConfirmObservable: ControlProperty<String?>
-        var registerButtonTap: ControlEvent<Void>
+        var idObservable: Observable<String?>
+        var nameObservable: Observable<String?>
+        var passwordObservable: Observable<String?>
+        var passwordConfirmObservable: Observable<String?>
+        var registerButtonTap: Observable<Void>
     }
     
     //MARK: - Output
