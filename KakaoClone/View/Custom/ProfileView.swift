@@ -19,7 +19,7 @@ final class ProfileView : UIView {
         return iv
     }()
     
-    private let nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .center

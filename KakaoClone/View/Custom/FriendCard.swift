@@ -14,20 +14,10 @@ protocol FriendCardDelegate: AnyObject {
 final class FriendCard: UIView {
     
     //MARK: - Properties
-    private let profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "default_user_image")
-        iv.backgroundColor = .systemGroupedBackground
-        iv.clipsToBounds = true
-        return iv
-    }()
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 16)
-        label.textAlignment = .center
-        return label
+    private let profileView: ProfileView = {
+        let view = ProfileView()
+        view.nameLabel.textColor = .black
+        return view
     }()
     
     private lazy var addFriendButton: UIButton = {
@@ -43,7 +33,7 @@ final class FriendCard: UIView {
     }()
 
     private lazy var vStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [profileImageView, nameLabel, addFriendButton])
+        let sv = UIStackView(arrangedSubviews: [profileView, addFriendButton])
         sv.axis = .vertical
         sv.spacing = 18
         return sv
@@ -52,9 +42,11 @@ final class FriendCard: UIView {
     weak var delegate: FriendCardDelegate?
     var isFriend: Bool = false
     
+    
     //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         layout()
     }
     
@@ -75,11 +67,6 @@ final class FriendCard: UIView {
             make.verticalEdges.equalToSuperview().inset(30)
         }
         
-        profileImageView.snp.makeConstraints { make in
-            make.size.equalTo(80)
-        }
-        layoutIfNeeded()
-        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2.5
     }
     
     func bind(
@@ -87,8 +74,7 @@ final class FriendCard: UIView {
         isMine: Bool,
         isAlreadyFriend: Bool
     ) {
-        profileImageView.sd_setImage(with: user.imageUrl)
-        nameLabel.text = user.name
+        profileView.bind(imageURL: user.imageUrl, name: user.name)
         
         addFriendButton.isHidden = isMine
         addFriendButton.setTitle(isAlreadyFriend ? "친구 삭제" : "친구 추가", for: .normal)

@@ -12,6 +12,10 @@ enum ProfileActionButtonType {
     case editProfile
 }
 
+protocol ProfileActionButtonDelegate: AnyObject {
+    func tap(buttonType: ProfileActionButtonType)
+}
+
 final class ProfileActionButton: UIView {
     //MARK: - Properties
     private let iconImageView: UIImageView = {
@@ -35,9 +39,12 @@ final class ProfileActionButton: UIView {
         let sv = UIStackView(arrangedSubviews: [iconImageView, titleLabel])
         sv.axis = .vertical
         sv.spacing = 10
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        sv.addGestureRecognizer(gestureRecognizer)
         return sv
     }()
     
+    weak var delegate: ProfileActionButtonDelegate?
     let actionType: ProfileActionButtonType
     
     //MARK: - LifeCycle
@@ -71,7 +78,12 @@ final class ProfileActionButton: UIView {
         }
         
         iconImageView.snp.makeConstraints { make in
-            make.height.equalTo(35)
+            make.height.equalTo(30)
         }
+    }
+    
+    //MARK: - Actions
+    @objc private func handleTap() {
+        delegate?.tap(buttonType: actionType)
     }
 }

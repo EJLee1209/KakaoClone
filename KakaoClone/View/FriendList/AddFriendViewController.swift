@@ -103,6 +103,7 @@ final class AddFriendViewController: UIViewController {
 
         layout()
         bind()
+        
     }
     
     //MARK: - Helpers

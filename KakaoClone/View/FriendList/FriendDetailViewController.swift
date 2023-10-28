@@ -37,14 +37,14 @@ class FriendDetailViewController: UIViewController {
     
     private let spacer: UIView = {
         let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return view
     }()
     
     private lazy var vStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [profileView, spacer, divider, hStackView])
         sv.axis = .vertical
-        sv.spacing = 10
+        sv.spacing = 15
         return sv
     }()
     
@@ -66,6 +66,7 @@ class FriendDetailViewController: UIViewController {
 
         layout()
         bind()
+        setupDelegate()
     }
     
     
@@ -93,8 +94,24 @@ class FriendDetailViewController: UIViewController {
         }
     }
     
+    private func setupDelegate() {
+        chatButton.delegate = self
+        editProfileButton.delegate = self
+    }
+    
     //MARK: - Actions
     @objc func handleClose() {
         dismiss(animated: true)
+    }
+}
+
+extension FriendDetailViewController: ProfileActionButtonDelegate {
+    func tap(buttonType: ProfileActionButtonType) {
+        switch buttonType {
+        case .chat:
+            print("DEBUG 채팅 버튼 탭")
+        case .editProfile:
+            print("DEBUG 프로필 편집 버튼 탭")
+        }
     }
 }
