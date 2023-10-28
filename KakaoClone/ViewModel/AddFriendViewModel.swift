@@ -12,13 +12,15 @@ import RxRelay
 final class AddFriendViewModel {
     
     let user: User
+    let friends: [User]
     let authService: AuthService
     let searchState: BehaviorRelay<APIState> = .init(value: .none)
     let addFriendState: BehaviorRelay<APIState> = .init(value: .none)
+    let deleteFriendState: BehaviorRelay<APIState> = .init(value: .none)
     private let bag = DisposeBag()
     
     private var id: String = ""
-    private var searchResult: User?
+    var searchResult: User?
     
     struct Input {
         let idObservable: Observable<String?>
@@ -26,10 +28,12 @@ final class AddFriendViewModel {
     struct Output {
         let searchFriendState: Observable<APIState>
         let addFriendState: Observable<APIState>
+        let deleteFriendState: Observable<APIState>
     }
     
-    init(user: User, authService: AuthService) {
+    init(user: User, friends: [User], authService: AuthService) {
         self.user = user
+        self.friends = friends
         self.authService = authService
     }
     
@@ -42,7 +46,8 @@ final class AddFriendViewModel {
         
         return Output(
             searchFriendState: searchState.asObservable(),
-            addFriendState: addFriendState.asObservable()
+            addFriendState: addFriendState.asObservable(),
+            deleteFriendState: deleteFriendState.asObservable()
         )
     }
     
@@ -72,6 +77,20 @@ final class AddFriendViewModel {
             } onError: { [weak self] error in
                 if let error = error as? APIError {
                     self?.addFriendState.accept(.failed(error.customDescription))
+                }
+            }.disposed(by: bag)
+    }
+    
+    func deleteFriend() {
+        guard let targetUser = self.searchResult else { return }
+        deleteFriendState.accept(.loading)
+        
+        authService.deleteFriend(from_id: user.id, to_id: targetUser.id)
+            .subscribe { [weak self] isSuccess in
+                self?.deleteFriendState.accept(.success(isSuccess))
+            } onError: { [weak self] error in
+                if let error = error as? APIError {
+                    self?.deleteFriendState.accept(.failed(error.customDescription))
                 }
             }.disposed(by: bag)
     }

@@ -12,6 +12,24 @@ import Alamofire
 
 final class AuthService {
     
+    func deleteFriend(from_id: String, to_id: String) -> Observable<Bool> {
+        let header : HTTPHeaders = ["Content-Type": "application/json"]
+        
+        return Observable<Bool>.create { observer in
+            let request = AF.request(
+                Constants.deleteFriendEndPoint,
+                method: .post,
+                parameters: ["from_id": from_id, "to_id": to_id],
+                encoding: JSONEncoding.default,
+                headers: header
+            ).responseData(completionHandler: self.authCompletion(observer: observer))
+            
+            return Disposables.create {
+                request.cancel() // Observable이 dispose될 때, 요청 취소
+            }
+        }
+    }
+    
     func addFriend(from_id: String, to_id: String) -> Observable<Bool> {
         let header : HTTPHeaders = ["Content-Type": "application/json"]
         
@@ -134,11 +152,12 @@ final class AuthService {
                 } else {
                     if let response =  response as? AuthResponse {
                         observer.onError(APIError.requestFailed(description: response.message))
+                        return
                     }
                     if let response = response as? FriendsResopnse {
                         observer.onError(APIError.requestFailed(description: response.message))
+                        return
                     }
-                    
                     observer.onError(APIError.invalidStatusCode(statusCode: statusCode))
                 }
             } catch {

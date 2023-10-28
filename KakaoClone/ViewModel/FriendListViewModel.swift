@@ -16,6 +16,7 @@ final class FriendListViewModel {
     
     weak var delegate: FriendListViewModelDelegate?
     let user: User
+    var friends: [User] = []
     var dataSource: [FriendListSection] {
         didSet {
             delegate?.updateDataSource(dataSource)
@@ -41,6 +42,7 @@ final class FriendListViewModel {
             .bind { [weak self] response in
                 guard let friends = response.data else { return }
                 self?.dataSource[1] = .friendsSection(users: friends)
+                self?.friends = friends
             }.disposed(by: bag)
     }
     

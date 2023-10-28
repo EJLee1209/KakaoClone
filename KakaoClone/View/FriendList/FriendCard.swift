@@ -41,7 +41,7 @@ final class FriendCard: UIView {
         button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
         return button
     }()
-    
+
     private lazy var vStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [profileImageView, nameLabel, addFriendButton])
         sv.axis = .vertical
@@ -50,6 +50,7 @@ final class FriendCard: UIView {
     }()
     
     weak var delegate: FriendCardDelegate?
+    var isFriend: Bool = false
     
     //MARK: - LifeCycle
     override init(frame: CGRect) {
@@ -83,13 +84,24 @@ final class FriendCard: UIView {
     
     func bind(
         user: User,
-        isMine: Bool
+        isMine: Bool,
+        isAlreadyFriend: Bool
     ) {
         profileImageView.sd_setImage(with: user.imageUrl)
         nameLabel.text = user.name
         
         addFriendButton.isHidden = isMine
+        addFriendButton.setTitle(isAlreadyFriend ? "친구 삭제" : "친구 추가", for: .normal)
+        addFriendButton.backgroundColor = isAlreadyFriend ? UIColor.systemRed : UIColor.systemYellow
+        addFriendButton.setTitleColor(isAlreadyFriend ? .white : .black, for: .normal)
+        isFriend = isAlreadyFriend
     }
+    
+    func setButtonState(isLoading: Bool) {
+        addFriendButton.isEnabled = !isLoading
+    }
+    
+    
     
     //MARK: - Actions
     

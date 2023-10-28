@@ -90,7 +90,11 @@ final class FriendListViewController: UIViewController {
     }
     
     @objc func handleAddFriend() {
-        let vm = AddFriendViewModel(user: viewModel.user, authService: viewModel.authService)
+        let vm = AddFriendViewModel(
+            user: viewModel.user,
+            friends: viewModel.friends,
+            authService: viewModel.authService
+        )
         let vc = AddFriendViewController(viewModel: vm)
         vc.delegate = self
         present(vc, animated: true)

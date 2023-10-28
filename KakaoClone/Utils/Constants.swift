@@ -14,4 +14,5 @@ final class Constants {
     static let fetchUserEndPoint = "\(baseURL)/user?id="
     static let addFriendEndPoint = "\(baseURL)/friends/add"
     static let fetchFrinedsEndPoint = "\(baseURL)/friends/list?id="
+    static let deleteFriendEndPoint = "\(baseURL)/friends/delete"
 }

@@ -32,7 +32,7 @@ final class AddFriendViewController: UIViewController {
         tf.textField.autocorrectionType = .no
         tf.textField.spellCheckingType = .no
         tf.textField.rightViewMode = .always
-        tf.textField.delegate = self
+        tf.delegate = self
         return tf
     }()
     
@@ -119,61 +119,103 @@ final class AddFriendViewController: UIViewController {
         let output = viewModel.transform(input: input)
         output.searchFriendState
             .bind { [weak self] state in
-                switch state {
-                case .failed(let message):
-                    print("DEBUG search failed: \(message)")
-                    self?.friendCardView.isHidden = true
-                    self?.noResultLabel.isHidden = false
-                case .success(let response):
-                    let response = response as! AuthResponse
-                    guard let user = response.data else { return }
-                    guard let vm = self?.viewModel else { return }
-                    self?.friendCardView.isHidden = false
-                    self?.noResultLabel.isHidden = true
-                    self?.friendCardView.bind(user: user, isMine: user.id == vm.user.id)
-                case .loading:
-                    print("DEBUG searching...")
-                    self?.friendCardView.isHidden = true
-                    self?.noResultLabel.isHidden = true
-                default:
-                    break
-                }
+                self?.changedSearchState(state: state)
             }.disposed(by: bag)
         
         output.addFriendState
-            .subscribe { [weak self] state in
-                switch state {
-                case .failed(let message):
-                    print("DEBUG search failed: \(message)")
-                case .success(let response):
-                    let response = response as! Bool
-                    print("DEBUG add friend \(response)")
-                    self?.delegate?.updateFriends()
-                case .loading:
-                    print("DEBUG add friend...")
-                    
-                default:
-                    break
-                }
-            } onError: { error in
-                
+            .bind { [weak self] state in
+                self?.changedAddFriendState(state: state)
             }.disposed(by: bag)
 
+        output.deleteFriendState
+            .bind { [weak self] state in
+                self?.changedDeleteFriendState(state: state)
+            }.disposed(by: bag)
+    }
+    
+    private func changedSearchState(state: APIState) {
+        switch state {
+        case .failed:
+            friendCardView.isHidden = true
+            noResultLabel.isHidden = false
+        case .success(let response):
+            let response = response as! AuthResponse
+            guard let user = response.data else { return }
+            friendCardView.isHidden = false
+            noResultLabel.isHidden = true
+            
+            let myFriend = viewModel.friends.filter { $0.id == user.id }
+            friendCardView.bind(
+                user: user,
+                isMine: user.id == viewModel.user.id,
+                isAlreadyFriend: myFriend.count != 0
+            )
+        case .loading:
+            friendCardView.isHidden = true
+            noResultLabel.isHidden = true
+        default:
+            break
+        }
+    }
+    private func changedAddFriendState(state: APIState) {
+        switch state {
+        case .failed(let message):
+            print("DEBUG add friend failed: \(message)")
+            friendCardView.setButtonState(isLoading: false)
+        case .success:
+            guard let friend = viewModel.searchResult else { return }
+            friendCardView.bind(
+                user: friend,
+                isMine: viewModel.user.id == friend.id,
+                isAlreadyFriend: true
+            )
+            delegate?.updateFriends()
+            friendCardView.setButtonState(isLoading: false)
+        case .loading:
+            friendCardView.setButtonState(isLoading: true)
+            
+        default:
+            break
+        }
+    }
+    
+    private func changedDeleteFriendState(state: APIState) {
+        switch state {
+        case .failed(let message):
+            print("DEBUG delete friend failed: \(message)")
+            friendCardView.setButtonState(isLoading: false)
+        case .success:
+            guard let friend = viewModel.searchResult else { return }
+            friendCardView.bind(
+                user: friend,
+                isMine: viewModel.user.id == friend.id,
+                isAlreadyFriend: false
+            )
+            delegate?.updateFriends()
+            friendCardView.setButtonState(isLoading: false)
+        case .loading:
+            friendCardView.setButtonState(isLoading: true)
+        default:
+            break
+        }
     }
 }
 
 //MARK: - UITextFieldDelegate
-extension AddFriendViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 친구 검색
+extension AddFriendViewController: UnderlineTextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) {
         viewModel.search()
-        return true
     }
 }
 
 extension AddFriendViewController: FriendCardDelegate {
     func buttonTap() {
         // 친구 추가
-        viewModel.addFriend()
+        if friendCardView.isFriend {
+            viewModel.deleteFriend()
+        } else {
+            viewModel.addFriend()
+        }
+        
     }
 }

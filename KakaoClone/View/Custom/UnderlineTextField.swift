@@ -16,6 +16,10 @@ enum RightViewType {
     case none
 }
 
+protocol UnderlineTextFieldDelegate: AnyObject {
+    func textFieldShouldReturn(_ textField: UITextField)
+}
+
 final class UnderlineTextField: UIView {
     //MARK: - Properties
     let textField: UITextField = .init()
@@ -52,6 +56,7 @@ final class UnderlineTextField: UIView {
     private let rightViewType: RightViewType
     private let bag = DisposeBag()
     let maxLength: Int
+    weak var delegate: UnderlineTextFieldDelegate?
     
     var text: ControlProperty<String?> {
         return textField.rx.text
@@ -126,5 +131,10 @@ extension UnderlineTextField: UITextFieldDelegate {
         
         let newLength = text.count + string.count - range.length
         return newLength <= self.maxLength // 길이 제한
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate?.textFieldShouldReturn(textField)
+        return true
     }
 }
