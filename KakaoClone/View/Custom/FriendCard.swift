@@ -16,7 +16,8 @@ final class FriendCard: UIView {
     //MARK: - Properties
     private let profileView: ProfileView = {
         let view = ProfileView()
-        view.nameLabel.textColor = .black
+        view.nameLabel.titleLabel.textColor = .black
+        view.stateMessageLabel.titleLabel.textColor = .systemGray2
         return view
     }()
     
@@ -74,7 +75,7 @@ final class FriendCard: UIView {
         isMine: Bool,
         isAlreadyFriend: Bool
     ) {
-        profileView.bind(imageURL: user.imageUrl, name: user.name)
+        profileView.bind(user: user, isSelectedImage: false)
         
         addFriendButton.isHidden = isMine
         addFriendButton.setTitle(isAlreadyFriend ? "친구 삭제" : "친구 추가", for: .normal)

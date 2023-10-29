@@ -6,11 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
 
 final class FriendDetailViewModel {
     
-    let user: User
+    var user: User
     var selectedFriend: User?
+    var selectedProfileImage: UIImage?
+    
     
     init(user: User, selectedFriend: User?) {
         self.user = user

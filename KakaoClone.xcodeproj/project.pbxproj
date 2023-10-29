@@ -23,6 +23,8 @@
 		CF1848522AEBBA540020F848 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848512AEBBA540020F848 /* FriendListViewModel.swift */; };
 		CF1848542AEBBFD70020F848 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848532AEBBFD70020F848 /* FriendCell.swift */; };
 		CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848552AEBC50C0020F848 /* FriendListSection.swift */; };
+		CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */; };
+		CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */; };
 		CF92D5F02AECB740003681EB /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */; };
 		CF92D5F22AECC207003681EB /* AddFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */; };
 		CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4AE2AEA968900F82081 /* UIViewController.swift */; };
@@ -72,6 +74,8 @@
 		CF1848512AEBBA540020F848 /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
 		CF1848532AEBBFD70020F848 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		CF1848552AEBC50C0020F848 /* FriendListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListSection.swift; sourceTree = "<group>"; };
+		CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineLabel.swift; sourceTree = "<group>"; };
+		CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailViewController.swift; sourceTree = "<group>"; };
 		CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewModel.swift; sourceTree = "<group>"; };
 		CFACC4AE2AEA968900F82081 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				CF1848532AEBBFD70020F848 /* FriendCell.swift */,
 				CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */,
 				CF04D17E2AED090900D0F56B /* FriendDetailViewController.swift */,
+				CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */,
 			);
 			path = FriendList;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				CF04D17A2AECC8F800D0F56B /* FriendCard.swift */,
 				CF04D1802AED0A0C00D0F56B /* ProfileActionButton.swift */,
 				CF04D1822AED0F4000D0F56B /* ProfileView.swift */,
+				CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				CFF8B1662AEA47A9003CC800 /* Constants.swift in Sources */,
 				CF04D18D2AED136F00D0F56B /* FriendDetailViewModel.swift in Sources */,
 				CF04D17F2AED090900D0F56B /* FriendDetailViewController.swift in Sources */,
+				CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */,
 				CF04D1812AED0A0C00D0F56B /* ProfileActionButton.swift in Sources */,
 				CFF8B1842AEA71CC003CC800 /* SignUpViewModel.swift in Sources */,
 				CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */,
@@ -385,6 +392,7 @@
 				CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */,
 				CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */,
 				CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */,
+				CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */,
 				CF92D5F22AECC207003681EB /* AddFriendViewModel.swift in Sources */,
 				CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */,
 				CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */,

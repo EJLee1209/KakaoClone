@@ -15,4 +15,11 @@ extension Reactive where Base: UIButton {
             button.backgroundColor = enabled ? .systemYellow : .systemGroupedBackground
         }
     }
+    
+    var editButtonIsEnabled: Binder<String?> {
+        return .init(self.base) { button, text in
+            guard let text = text else { return }
+            button.isEnabled = !text.isEmpty
+        }
+    }
 }
