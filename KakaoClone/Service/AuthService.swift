@@ -102,6 +102,38 @@ final class AuthService {
             }
         }
     }
+    
+    func updateProfile(
+        user: User,
+        selectedImage: UIImage?
+    ) -> Observable<AuthResponse> {
+        let header: HTTPHeaders = ["Content-Type": "multipart/form-data"]
+        
+        return Observable<AuthResponse>.create { observer in
+            let request = AF.upload(multipartFormData: { multipartFromData in
+                multipartFromData.append(Data(user.id.utf8), withName: "id")
+                multipartFromData.append(Data(user.name.utf8), withName: "name")
+                if let imagePath = user.imagePath {
+                    multipartFromData.append(Data(imagePath.utf8), withName: "originalImagePath")
+                }
+                multipartFromData.append(Data(user.stateMessage?.utf8 ?? "".utf8), withName: "stateMessage")
+                if let selectedImage {
+                    multipartFromData.append(
+                        selectedImage.pngData() ?? Data(),
+                        withName: "image",
+                        fileName: "image/png",
+                        mimeType: "image/png"
+                    )
+                }
+                
+            }, to: Constants.updateProfileEndPoint, method: .put, headers: header)
+                .responseData(completionHandler: self.authCompletion(observer: observer))
+            
+            return Disposables.create {
+                request.cancel()
+            }
+        }
+    }
 
     func signUp(
         user: User,

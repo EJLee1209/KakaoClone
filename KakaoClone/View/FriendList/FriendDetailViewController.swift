@@ -154,7 +154,7 @@ class FriendDetailViewController: UIViewController {
     @objc func handleComplete() {
         // 프로필 편집 완료
         updateButtonIsHidden(isEditing: false)
-        print("DEBUG 프로필 업데이트 : \(viewModel.user)")
+        viewModel.updateUser()
     }
     
 }

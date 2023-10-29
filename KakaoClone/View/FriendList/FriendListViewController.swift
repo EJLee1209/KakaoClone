@@ -152,9 +152,9 @@ extension FriendListViewController: UITableViewDelegate {
         
         switch viewModel.dataSource[indexPath.section] {
         case .friendsSection(let friends):
-            vm = .init(user: viewModel.user, selectedFriend: friends[indexPath.row])
+            vm = .init(user: viewModel.user, selectedFriend: friends[indexPath.row], authService: viewModel.authService)
         case .userProfileSection(let user):
-            vm = .init(user: user, selectedFriend: nil)
+            vm = .init(user: user, selectedFriend: nil, authService: viewModel.authService)
         }
         
         let vc = FriendDetailViewController(viewModel: vm)

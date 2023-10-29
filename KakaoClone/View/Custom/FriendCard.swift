@@ -88,8 +88,6 @@ final class FriendCard: UIView {
         addFriendButton.isEnabled = !isLoading
     }
     
-    
-    
     //MARK: - Actions
     
     @objc func handleTap() {
