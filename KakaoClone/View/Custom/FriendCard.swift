@@ -64,10 +64,8 @@ final class FriendCard: UIView {
         
         addSubview(vStackView)
         vStackView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.verticalEdges.equalToSuperview().inset(30)
+            make.edges.equalToSuperview().inset(30)
         }
-        
     }
     
     func bind(

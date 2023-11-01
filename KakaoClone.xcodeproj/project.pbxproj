@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2C3F2D7578F7194552C848E /* Pods_KakaoClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9454EADA26FE7BED7ABAE96A /* Pods_KakaoClone.framework */; };
 		CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17A2AECC8F800D0F56B /* FriendCard.swift */; };
 		CF04D17D2AECDBDF00D0F56B /* FriendsResopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */; };
 		CF04D17F2AED090900D0F56B /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17E2AED090900D0F56B /* FriendDetailViewController.swift */; };
@@ -25,6 +26,13 @@
 		CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848552AEBC50C0020F848 /* FriendListSection.swift */; };
 		CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */; };
 		CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */; };
+		CF7F7C992AF0DB2700EED0C7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */; };
+		CF7F7C9D2AF1034700EED0C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C9C2AF1034700EED0C7 /* ChatViewModel.swift */; };
+		CF7F7CA02AF103D800EED0C7 /* MyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C9F2AF103D800EED0C7 /* MyMessageCell.swift */; };
+		CF7F7CA22AF1041100EED0C7 /* OtherMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7CA12AF1041100EED0C7 /* OtherMessageCell.swift */; };
+		CF7F7CA42AF1044700EED0C7 /* MyImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7CA32AF1044700EED0C7 /* MyImageCell.swift */; };
+		CF7F7CA62AF1045C00EED0C7 /* OtherImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7CA52AF1045C00EED0C7 /* OtherImageCell.swift */; };
+		CF7F7CA92AF11B1A00EED0C7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7CA82AF11B1A00EED0C7 /* Date.swift */; };
 		CF92D5F02AECB740003681EB /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */; };
 		CF92D5F22AECC207003681EB /* AddFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */; };
 		CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4AE2AEA968900F82081 /* UIViewController.swift */; };
@@ -37,15 +45,6 @@
 		CFF8B15F2AEA4755003CC800 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B15E2AEA4755003CC800 /* LoginViewController.swift */; };
 		CFF8B1632AEA476D003CC800 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1622AEA476D003CC800 /* SignUpViewController.swift */; };
 		CFF8B1662AEA47A9003CC800 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1652AEA47A9003CC800 /* Constants.swift */; };
-		CFF8B1692AEA4A02003CC800 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1682AEA4A02003CC800 /* SnapKit */; };
-		CFF8B16B2AEA4A02003CC800 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B16A2AEA4A02003CC800 /* SnapKit-Dynamic */; };
-		CFF8B16E2AEA4A0C003CC800 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B16D2AEA4A0C003CC800 /* SDWebImage */; };
-		CFF8B1702AEA4A0C003CC800 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B16F2AEA4A0C003CC800 /* SDWebImageMapKit */; };
-		CFF8B1732AEA5240003CC800 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1722AEA5240003CC800 /* RxBlocking */; };
-		CFF8B1752AEA5240003CC800 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1742AEA5240003CC800 /* RxBlocking-Dynamic */; };
-		CFF8B1772AEA5240003CC800 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1762AEA5240003CC800 /* RxCocoa */; };
-		CFF8B1792AEA5240003CC800 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B1782AEA5240003CC800 /* RxCocoa-Dynamic */; };
-		CFF8B17B2AEA5240003CC800 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B17A2AEA5240003CC800 /* RxRelay */; };
 		CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B17C2AEA5431003CC800 /* LoginViewModel.swift */; };
 		CFF8B1802AEA59DC003CC800 /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B17F2AEA59DC003CC800 /* Reactive.swift */; };
 		CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1812AEA5EDF003CC800 /* UnderlineTextField.swift */; };
@@ -54,10 +53,12 @@
 		CFF8B1882AEA7DDD003CC800 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1872AEA7DDD003CC800 /* AuthService.swift */; };
 		CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1892AEA7F4B003CC800 /* APIError.swift */; };
 		CFF8B18C2AEA7FC4003CC800 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */; };
-		CFF8B18F2AEA8034003CC800 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CFF8B18E2AEA8034003CC800 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		390C0FC0205F5E7DE3A42A4A /* Pods-KakaoClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoClone.release.xcconfig"; path = "Target Support Files/Pods-KakaoClone/Pods-KakaoClone.release.xcconfig"; sourceTree = "<group>"; };
+		9454EADA26FE7BED7ABAE96A /* Pods_KakaoClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KakaoClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD200CCB53EA98BF2A1599D6 /* Pods-KakaoClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoClone.debug.xcconfig"; path = "Target Support Files/Pods-KakaoClone/Pods-KakaoClone.debug.xcconfig"; sourceTree = "<group>"; };
 		CF04D17A2AECC8F800D0F56B /* FriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCard.swift; sourceTree = "<group>"; };
 		CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResopnse.swift; sourceTree = "<group>"; };
 		CF04D17E2AED090900D0F56B /* FriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +77,13 @@
 		CF1848552AEBC50C0020F848 /* FriendListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListSection.swift; sourceTree = "<group>"; };
 		CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineLabel.swift; sourceTree = "<group>"; };
 		CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailViewController.swift; sourceTree = "<group>"; };
+		CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CF7F7C9C2AF1034700EED0C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		CF7F7C9F2AF103D800EED0C7 /* MyMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
+		CF7F7CA12AF1041100EED0C7 /* OtherMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMessageCell.swift; sourceTree = "<group>"; };
+		CF7F7CA32AF1044700EED0C7 /* MyImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageCell.swift; sourceTree = "<group>"; };
+		CF7F7CA52AF1045C00EED0C7 /* OtherImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherImageCell.swift; sourceTree = "<group>"; };
+		CF7F7CA82AF11B1A00EED0C7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CF92D5EF2AECB740003681EB /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewModel.swift; sourceTree = "<group>"; };
 		CFACC4AE2AEA968900F82081 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -105,22 +113,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF8B17B2AEA5240003CC800 /* RxRelay in Frameworks */,
-				CFF8B1792AEA5240003CC800 /* RxCocoa-Dynamic in Frameworks */,
-				CFF8B16E2AEA4A0C003CC800 /* SDWebImage in Frameworks */,
-				CFF8B1692AEA4A02003CC800 /* SnapKit in Frameworks */,
-				CFF8B1702AEA4A0C003CC800 /* SDWebImageMapKit in Frameworks */,
-				CFF8B18F2AEA8034003CC800 /* Alamofire in Frameworks */,
-				CFF8B1772AEA5240003CC800 /* RxCocoa in Frameworks */,
-				CFF8B1752AEA5240003CC800 /* RxBlocking-Dynamic in Frameworks */,
-				CFF8B16B2AEA4A02003CC800 /* SnapKit-Dynamic in Frameworks */,
-				CFF8B1732AEA5240003CC800 /* RxBlocking in Frameworks */,
+				B2C3F2D7578F7194552C848E /* Pods_KakaoClone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE6036A0F26D933AB9205DCD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD200CCB53EA98BF2A1599D6 /* Pods-KakaoClone.debug.xcconfig */,
+				390C0FC0205F5E7DE3A42A4A /* Pods-KakaoClone.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CF04D1862AED124B00D0F56B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +176,34 @@
 			path = ChatList;
 			sourceTree = "<group>";
 		};
+		CF21A9582AF0D4ED009B2C86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9454EADA26FE7BED7ABAE96A /* Pods_KakaoClone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF7F7C9E2AF103C800EED0C7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */,
+				CF7F7CA72AF1046C00EED0C7 /* Cell */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		CF7F7CA72AF1046C00EED0C7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CF7F7C9F2AF103D800EED0C7 /* MyMessageCell.swift */,
+				CF7F7CA12AF1041100EED0C7 /* OtherMessageCell.swift */,
+				CF7F7CA32AF1044700EED0C7 /* MyImageCell.swift */,
+				CF7F7CA52AF1045C00EED0C7 /* OtherImageCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CFACC4B02AEA98D600F82081 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +222,8 @@
 			children = (
 				CFF8B1442AEA46B4003CC800 /* KakaoClone */,
 				CFF8B1432AEA46B4003CC800 /* Products */,
+				CF21A9582AF0D4ED009B2C86 /* Frameworks */,
+				BE6036A0F26D933AB9205DCD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +269,7 @@
 				CF1848512AEBBA540020F848 /* FriendListViewModel.swift */,
 				CF92D5F12AECC207003681EB /* AddFriendViewModel.swift */,
 				CF04D18C2AED136F00D0F56B /* FriendDetailViewModel.swift */,
+				CF7F7C9C2AF1034700EED0C7 /* ChatViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -243,6 +282,7 @@
 				CFACC4B02AEA98D600F82081 /* Custom */,
 				CF18484B2AEBB6A90020F848 /* FriendList */,
 				CF18484C2AEBB6B10020F848 /* ChatList */,
+				CF7F7C9E2AF103C800EED0C7 /* Chat */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +323,7 @@
 				CFF8B17F2AEA59DC003CC800 /* Reactive.swift */,
 				CFACC4AE2AEA968900F82081 /* UIViewController.swift */,
 				CF04D1842AED123000D0F56B /* UIColor.swift */,
+				CF7F7CA82AF11B1A00EED0C7 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -294,27 +335,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFF8B1562AEA46B4003CC800 /* Build configuration list for PBXNativeTarget "KakaoClone" */;
 			buildPhases = (
+				D855DCA69FC1B308A54983A4 /* [CP] Check Pods Manifest.lock */,
 				CFF8B13E2AEA46B4003CC800 /* Sources */,
 				CFF8B13F2AEA46B4003CC800 /* Frameworks */,
 				CFF8B1402AEA46B4003CC800 /* Resources */,
+				68F50B1BE31D92E6D8F29CEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = KakaoClone;
-			packageProductDependencies = (
-				CFF8B1682AEA4A02003CC800 /* SnapKit */,
-				CFF8B16A2AEA4A02003CC800 /* SnapKit-Dynamic */,
-				CFF8B16D2AEA4A0C003CC800 /* SDWebImage */,
-				CFF8B16F2AEA4A0C003CC800 /* SDWebImageMapKit */,
-				CFF8B1722AEA5240003CC800 /* RxBlocking */,
-				CFF8B1742AEA5240003CC800 /* RxBlocking-Dynamic */,
-				CFF8B1762AEA5240003CC800 /* RxCocoa */,
-				CFF8B1782AEA5240003CC800 /* RxCocoa-Dynamic */,
-				CFF8B17A2AEA5240003CC800 /* RxRelay */,
-				CFF8B18E2AEA8034003CC800 /* Alamofire */,
-			);
 			productName = KakaoClone;
 			productReference = CFF8B1422AEA46B4003CC800 /* KakaoClone.app */;
 			productType = "com.apple.product-type.application";
@@ -343,12 +374,6 @@
 				Base,
 			);
 			mainGroup = CFF8B1392AEA46B3003CC800;
-			packageReferences = (
-				CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				CFF8B18D2AEA8034003CC800 /* XCRemoteSwiftPackageReference "Alamofire" */,
-			);
 			productRefGroup = CFF8B1432AEA46B4003CC800 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -370,11 +395,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		68F50B1BE31D92E6D8F29CEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KakaoClone/Pods-KakaoClone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KakaoClone/Pods-KakaoClone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KakaoClone/Pods-KakaoClone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D855DCA69FC1B308A54983A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KakaoClone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CFF8B13E2AEA46B4003CC800 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7F7CA22AF1041100EED0C7 /* OtherMessageCell.swift in Sources */,
+				CF7F7CA02AF103D800EED0C7 /* MyMessageCell.swift in Sources */,
 				CF04D18B2AED125B00D0F56B /* ThemeFont.swift in Sources */,
 				CF1848522AEBBA540020F848 /* FriendListViewModel.swift in Sources */,
 				CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */,
@@ -387,9 +456,11 @@
 				CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */,
 				CF04D1812AED0A0C00D0F56B /* ProfileActionButton.swift in Sources */,
 				CFF8B1842AEA71CC003CC800 /* SignUpViewModel.swift in Sources */,
+				CF7F7CA62AF1045C00EED0C7 /* OtherImageCell.swift in Sources */,
 				CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */,
 				CFF8B15F2AEA4755003CC800 /* LoginViewController.swift in Sources */,
 				CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */,
+				CF7F7CA92AF11B1A00EED0C7 /* Date.swift in Sources */,
 				CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */,
 				CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */,
 				CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */,
@@ -403,11 +474,14 @@
 				CF04D1852AED123000D0F56B /* UIColor.swift in Sources */,
 				CFF8B1632AEA476D003CC800 /* SignUpViewController.swift in Sources */,
 				CF04D1832AED0F4000D0F56B /* ProfileView.swift in Sources */,
+				CF7F7CA42AF1044700EED0C7 /* MyImageCell.swift in Sources */,
 				CF18484A2AEBA7D00020F848 /* MainViewModel.swift in Sources */,
 				CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */,
+				CF7F7C9D2AF1034700EED0C7 /* ChatViewModel.swift in Sources */,
 				CF04D17D2AECDBDF00D0F56B /* FriendsResopnse.swift in Sources */,
 				CFF8B1862AEA78F9003CC800 /* User.swift in Sources */,
 				CF92D5F02AECB740003681EB /* AddFriendViewController.swift in Sources */,
+				CF7F7C992AF0DB2700EED0C7 /* ChatViewController.swift in Sources */,
 				CF04D1882AED125300D0F56B /* ThemeColor.swift in Sources */,
 				CFF8B1482AEA46B4003CC800 /* SceneDelegate.swift in Sources */,
 				CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */,
@@ -465,7 +539,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -528,7 +602,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -549,6 +623,7 @@
 		};
 		CFF8B1572AEA46B4003CC800 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD200CCB53EA98BF2A1599D6 /* Pods-KakaoClone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -579,6 +654,7 @@
 		};
 		CFF8B1582AEA46B4003CC800 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 390C0FC0205F5E7DE3A42A4A /* Pods-KakaoClone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -629,94 +705,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
-		CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.18.3;
-			};
-		};
-		CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.6.0;
-			};
-		};
-		CFF8B18D2AEA8034003CC800 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.8.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CFF8B1682AEA4A02003CC800 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		CFF8B16A2AEA4A02003CC800 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B1672AEA4A02003CC800 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
-		CFF8B16D2AEA4A0C003CC800 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-		CFF8B16F2AEA4A0C003CC800 /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B16C2AEA4A0C003CC800 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
-		};
-		CFF8B1722AEA5240003CC800 /* RxBlocking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxBlocking;
-		};
-		CFF8B1742AEA5240003CC800 /* RxBlocking-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxBlocking-Dynamic";
-		};
-		CFF8B1762AEA5240003CC800 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		CFF8B1782AEA5240003CC800 /* RxCocoa-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxCocoa-Dynamic";
-		};
-		CFF8B17A2AEA5240003CC800 /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B1712AEA5240003CC800 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		CFF8B18E2AEA8034003CC800 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CFF8B18D2AEA8034003CC800 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CFF8B13A2AEA46B3003CC800 /* Project object */;
 }

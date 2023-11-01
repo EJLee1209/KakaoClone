@@ -158,7 +158,7 @@ extension FriendListViewController: UITableViewDelegate {
         }
         
         let vc = FriendDetailViewController(viewModel: vm)
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
     
