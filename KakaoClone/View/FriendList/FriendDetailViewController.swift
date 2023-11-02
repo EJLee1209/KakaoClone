@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FriendDetailViewControllerDelegate: AnyObject {
+    func updateUser(user: User)
+}
+
 class FriendDetailViewController: UIViewController {
     //MARK: - Properties
     private lazy var closeButton: UIButton = {
@@ -67,6 +71,7 @@ class FriendDetailViewController: UIViewController {
     }()
     
     private let viewModel: FriendDetailViewModel
+    weak var delegate: FriendDetailViewControllerDelegate?
     
     //MARK: - LifeCycle
     
@@ -155,6 +160,7 @@ class FriendDetailViewController: UIViewController {
         // 프로필 편집 완료
         updateButtonIsHidden(isEditing: false)
         viewModel.updateUser()
+        delegate?.updateUser(user: viewModel.user)
     }
     
 }

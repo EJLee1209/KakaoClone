@@ -158,6 +158,7 @@ extension FriendListViewController: UITableViewDelegate {
         }
         
         let vc = FriendDetailViewController(viewModel: vm)
+        vc.delegate = self
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
@@ -175,5 +176,13 @@ extension FriendListViewController: FriendListViewModelDelegate {
 extension FriendListViewController: AddFriendDelegate {
     func updateFriends() {
         viewModel.fetchFriends()
+    }
+}
+
+extension FriendListViewController: FriendDetailViewControllerDelegate {
+    func updateUser(user: User) {
+        viewModel.user = user
+        viewModel.dataSource[0] = .userProfileSection(user: user)
+        tableView.reloadRows(at: [.init(row: 0, section: 0)], with: .automatic)
     }
 }

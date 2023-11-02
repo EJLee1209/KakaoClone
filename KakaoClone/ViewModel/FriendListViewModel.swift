@@ -15,7 +15,7 @@ protocol FriendListViewModelDelegate: AnyObject {
 final class FriendListViewModel {
     
     weak var delegate: FriendListViewModelDelegate?
-    let user: User
+    var user: User
     var friends: [User] = []
     var dataSource: [FriendListSection] {
         didSet {
