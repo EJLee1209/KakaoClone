@@ -26,6 +26,8 @@
 		CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848552AEBC50C0020F848 /* FriendListSection.swift */; };
 		CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */; };
 		CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */; };
+		CF45ECD52AF263DF00CE8F7D /* ChatInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45ECD42AF263DF00CE8F7D /* ChatInputField.swift */; };
+		CF45ECD72AF3479500CE8F7D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45ECD62AF3479500CE8F7D /* Message.swift */; };
 		CF7F7C992AF0DB2700EED0C7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */; };
 		CF7F7C9D2AF1034700EED0C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C9C2AF1034700EED0C7 /* ChatViewModel.swift */; };
 		CF7F7CA02AF103D800EED0C7 /* MyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C9F2AF103D800EED0C7 /* MyMessageCell.swift */; };
@@ -77,6 +79,8 @@
 		CF1848552AEBC50C0020F848 /* FriendListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListSection.swift; sourceTree = "<group>"; };
 		CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineLabel.swift; sourceTree = "<group>"; };
 		CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailViewController.swift; sourceTree = "<group>"; };
+		CF45ECD42AF263DF00CE8F7D /* ChatInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputField.swift; sourceTree = "<group>"; };
+		CF45ECD62AF3479500CE8F7D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CF7F7C9C2AF1034700EED0C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		CF7F7C9F2AF103D800EED0C7 /* MyMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			children = (
 				CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */,
 				CF7F7CA72AF1046C00EED0C7 /* Cell */,
+				CF45ECD42AF263DF00CE8F7D /* ChatInputField.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */,
 				CF1848552AEBC50C0020F848 /* FriendListSection.swift */,
 				CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */,
+				CF45ECD62AF3479500CE8F7D /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				CF04D18D2AED136F00D0F56B /* FriendDetailViewModel.swift in Sources */,
 				CF04D17F2AED090900D0F56B /* FriendDetailViewController.swift in Sources */,
 				CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */,
+				CF45ECD72AF3479500CE8F7D /* Message.swift in Sources */,
 				CF04D1812AED0A0C00D0F56B /* ProfileActionButton.swift in Sources */,
 				CFF8B1842AEA71CC003CC800 /* SignUpViewModel.swift in Sources */,
 				CF7F7CA62AF1045C00EED0C7 /* OtherImageCell.swift in Sources */,
@@ -465,6 +472,7 @@
 				CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */,
 				CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */,
 				CF92D5F22AECC207003681EB /* AddFriendViewModel.swift in Sources */,
+				CF45ECD52AF263DF00CE8F7D /* ChatInputField.swift in Sources */,
 				CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */,
 				CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */,
 				CFF8B1882AEA7DDD003CC800 /* AuthService.swift in Sources */,

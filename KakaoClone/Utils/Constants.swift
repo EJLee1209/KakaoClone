@@ -8,8 +8,7 @@
 import Foundation
 
 final class Constants {
-//    static let baseURL = "http://192.168.219.101:8080"
-    static let baseURL = "http://10.50.249.134:8080"
+    static let baseURL = "http://192.168.219.102:8080"
 
     static let signUpEndPoint = "\(baseURL)/register"
     static let signInEndPoint = "\(baseURL)/login"

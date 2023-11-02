@@ -6,36 +6,8 @@
 //
 
 import UIKit
-
-struct Message: Codable {
-    let id: Int
-    let roomId: Int
-    let senderId: String
-    let text: String?
-    let imagePath: [String]?
-    var dateTime: Date = Date()
-    
-    var type: MessageType {
-        guard let _ = imagePath else {
-            return .text
-        }
-        return .image
-    }
-    
-    var images: [URL?] {
-        guard let imagePath = imagePath else { return [] }
-        return imagePath.map { URL(string: $0) }
-    }
-    
-    func isMine(currentUser: User) -> Bool {
-        return currentUser.id == senderId
-    }
-}
-
-enum MessageType {
-    case image
-    case text
-}
+import RxSwift
+import RxCocoa
 
 class ChatViewController: UIViewController {
     //MARK: - Properties
@@ -45,72 +17,23 @@ class ChatViewController: UIViewController {
         tv.separatorStyle = .none
         tv.rowHeight = UITableView.automaticDimension
         tv.estimatedRowHeight = 80
+        tv.backgroundColor = .clear
+        tv.contentInset = .init(top: 30, left: 0, bottom: 10, right: 0)
+        tv.allowsSelection = false
+        tv.setContentHuggingPriority(.defaultLow, for: .vertical)
+        tv.backgroundColor = ThemeColor.background
         tv.register(MyMessageCell.self, forCellReuseIdentifier: MyMessageCell.id)
         tv.register(OtherMessageCell.self, forCellReuseIdentifier: OtherMessageCell.id)
         tv.register(MyImageCell.self, forCellReuseIdentifier: MyImageCell.id)
         tv.register(OtherImageCell.self, forCellReuseIdentifier: OtherImageCell.id)
-        tv.backgroundColor = .clear
-        tv.contentInset = .init(top: 30, left: 0, bottom: 30, right: 0)
-        tv.allowsSelection = false
+        tv.keyboardDismissMode = .onDrag
         return tv
     }()
     
-    private let dataSource: [Message] = [
-        .init(id: 0, roomId: 0, senderId: "suzylove", text: "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요", imagePath: nil),
-        .init(id: 1, roomId: 0, senderId: "dldmswo1209", text: "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕", imagePath: nil),
-        .init(id: 2, roomId: 0, senderId: "sonny", text: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-        ]),
-        .init(id: 2, roomId: 0, senderId: "sonny", text: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 3, roomId: 0, senderId: "dldmswo1209", text: "우와 월클 손흥민!", imagePath: nil),
-        .init(id: 4, roomId: 0, senderId: "suzylove", text: "어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...", imagePath: nil),
-        .init(id: 6, roomId: 0, senderId: "dldmswo1209", text: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 7, roomId: 0, senderId: "joker", text: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 8, roomId: 0, senderId: "sonny", text: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 9, roomId: 0, senderId: "suzylove", text: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-    ]
+    private lazy var  inputField: ChatInputField = .init()
     
     private let viewModel: ChatViewModel
+    private let bag = DisposeBag()
     
     //MARK: - LifeCycle
     init(viewModel: ChatViewModel) {
@@ -126,16 +49,59 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        observeKeyboardState()
+        inputField.delegate = self
+        
     }
     
     //MARK: - Helpers
     private func layout() {
-        view.backgroundColor = ThemeColor.background
+        view.backgroundColor = .white
+        view.keyboardLayoutGuide.followsUndockedKeyboard = true
+        [tableView, inputField].forEach(view.addSubview(_:))
         
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        inputField.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
         }
+        
+        view.layoutIfNeeded()
+        
+        tableView.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(inputField.frame.height)
+        }
+    }
+    
+    private func observeKeyboardState() {
+        let keyboardWillShow = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+        let keyboardWillhide = NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+        
+        Observable.merge(keyboardWillShow, keyboardWillhide)
+            .bind { [weak self] notification in
+                self?.updateConstraintsWhenChangedKeyboardState(notification)
+            }.disposed(by: bag)
+    }
+    
+    private func updateConstraintsWhenChangedKeyboardState(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+
+        let keyboardHeight = notification.name == UIResponder.keyboardWillShowNotification ? keyboardFrame.height : 0
+        
+        let originOffset = tableView.contentOffset
+        let newOffset: CGPoint
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            newOffset = CGPoint(
+                x: originOffset.x,
+                y: originOffset.y + (keyboardHeight - inputField.frame.height) + 10
+            )
+        } else {
+            newOffset = originOffset
+        }
+        
+        tableView.setContentOffset(newOffset, animated: true)
     }
 }
 
@@ -144,12 +110,12 @@ class ChatViewController: UIViewController {
 //MARK: - UICollectionViewDataSource
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return Message.mockDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let isMine = dataSource[indexPath.row].isMine(currentUser: viewModel.user)
-        let message = dataSource[indexPath.row]
+        let isMine = Message.mockDataSource[indexPath.row].isMine(currentUser: viewModel.user)
+        let message = Message.mockDataSource[indexPath.row]
         
         switch message.type {
         case .text:
@@ -174,7 +140,10 @@ extension ChatViewController: UITableViewDataSource {
             }
         }
     }
-    
-    
-    
+}
+
+extension ChatViewController: ChatInputFieldDelegate {
+    func sendMessage(text: String) {
+        print("DEBUG send message: \(text)")
+    }
 }

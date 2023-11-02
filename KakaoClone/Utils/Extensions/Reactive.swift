@@ -22,4 +22,11 @@ extension Reactive where Base: UIButton {
             button.isEnabled = !text.isEmpty
         }
     }
+    
+    var sendButtonIsHidden: Binder<String?> {
+        return Binder(self.base) { button, text in
+            guard let text = text else { return }
+            button.isHidden = text.isEmpty
+        }
+    }
 }
