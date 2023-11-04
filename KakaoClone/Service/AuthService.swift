@@ -9,76 +9,37 @@ import RxSwift
 import UIKit
 import Alamofire
 
-
 final class AuthService {
     
-    func deleteFriend(from_id: String, to_id: String) -> Observable<Bool> {
-        let header : HTTPHeaders = ["Content-Type": "application/json"]
-        
-        return Observable<Bool>.create { observer in
-            let request = AF.request(
-                Constants.deleteFriendEndPoint,
-                method: .post,
-                parameters: ["from_id": from_id, "to_id": to_id],
-                encoding: JSONEncoding.default,
-                headers: header
-            ).responseData(completionHandler: self.authCompletion(observer: observer))
-            
-            return Disposables.create {
-                request.cancel() // Observable이 dispose될 때, 요청 취소
-            }
+    func deleteFriend(fromId: String, toId: String) -> Observable<Bool> {
+        return Observable<Bool>.create { observer -> Disposable in
+            AF.request(APIType.deleteFriend(fromId: fromId, toId: toId))
+                .responseData(completionHandler: self.authCompletion(observer: observer))
+            return Disposables.create()
         }
     }
     
-    func addFriend(from_id: String, to_id: String) -> Observable<Bool> {
-        let header : HTTPHeaders = ["Content-Type": "application/json"]
-        
-        return Observable<Bool>.create { observer in
-            let request = AF.request(
-                Constants.addFriendEndPoint,
-                method: .post,
-                parameters: ["from_id": from_id, "to_id": to_id],
-                encoding: JSONEncoding.default,
-                headers: header
-            ).responseData(completionHandler: self.authCompletion(observer: observer))
-            
-            return Disposables.create {
-                request.cancel()
-            }
+    func addFriend(fromId: String, toId: String) -> Observable<Bool> {
+        return Observable<Bool>.create { observer -> Disposable in
+            AF.request(APIType.addFriend(fromId: fromId, toId: toId))
+                .responseData(completionHandler: self.authCompletion(observer: observer))
+            return Disposables.create()
         }
     }
     
-    func fetchFriends(id: String) -> Observable<FriendsResopnse> {
-        let header : HTTPHeaders = ["Content-Type": "application/json"]
-        
-        return Observable<FriendsResopnse>.create { observer in
-            let request = AF.request(
-                "\(Constants.fetchFrinedsEndPoint)\(id)",
-                method: .get,
-                encoding: JSONEncoding.default,
-                headers: header
-            ).responseData(completionHandler: self.authCompletion(observer: observer))
-            
-            return Disposables.create {
-                request.cancel() // Observable이 dispose될 때, 요청 취소
-            }
+    func fetchFriends(id: String) -> Observable<FriendsResponse> {
+        return Observable<FriendsResponse>.create { observer -> Disposable in
+            AF.request(APIType.fetchFriends(id: id))
+                .responseData(completionHandler: self.authCompletion(observer: observer))
+            return Disposables.create()
         }
     }
     
     func fetchUser(id: String) -> Observable<AuthResponse> {
-        let header : HTTPHeaders = ["Content-Type": "application/json"]
-        
-        return Observable<AuthResponse>.create { observer in
-            let request = AF.request(
-                "\(Constants.fetchUserEndPoint)\(id)",
-                method: .get,
-                encoding: JSONEncoding.default,
-                headers: header
-            ).responseData(completionHandler: self.authCompletion(observer: observer))
-            
-            return Disposables.create {
-                request.cancel() // Observable이 dispose될 때, 요청 취소
-            }
+        return Observable<AuthResponse>.create { observer -> Disposable in
+            AF.request(APIType.fetchUser(id: id))
+                .responseData(completionHandler: self.authCompletion(observer: observer))
+            return Disposables.create()
         }
     }
     
@@ -86,20 +47,10 @@ final class AuthService {
         id: String,
         password: String
     ) -> Observable<AuthResponse> {
-        let header : HTTPHeaders = ["Content-Type": "application/json"]
-        
         return Observable<AuthResponse>.create { observer in
-            let request = AF.request(
-                Constants.signInEndPoint,
-                method: .post,
-                parameters: ["id": id, "password": password],
-                encoding: JSONEncoding.default,
-                headers: header
-            ).responseData(completionHandler: self.authCompletion(observer: observer))
-            
-            return Disposables.create {
-                request.cancel()
-            }
+            AF.request(APIType.signIn(id: id, password: password))
+                .responseData(completionHandler: self.authCompletion(observer: observer))
+            return Disposables.create()
         }
     }
     
@@ -107,31 +58,12 @@ final class AuthService {
         user: User,
         selectedImage: UIImage?
     ) -> Observable<AuthResponse> {
-        let header: HTTPHeaders = ["Content-Type": "multipart/form-data"]
+        let api: APIType = .updateProfile(user: user, selectedImage: selectedImage)
         
         return Observable<AuthResponse>.create { observer in
-            let request = AF.upload(multipartFormData: { multipartFromData in
-                multipartFromData.append(Data(user.id.utf8), withName: "id")
-                multipartFromData.append(Data(user.name.utf8), withName: "name")
-                if let imagePath = user.imagePath {
-                    multipartFromData.append(Data(imagePath.utf8), withName: "originalImagePath")
-                }
-                multipartFromData.append(Data(user.stateMessage?.utf8 ?? "".utf8), withName: "stateMessage")
-                if let selectedImage {
-                    multipartFromData.append(
-                        selectedImage.pngData() ?? Data(),
-                        withName: "image",
-                        fileName: "image/png",
-                        mimeType: "image/png"
-                    )
-                }
-                
-            }, to: Constants.updateProfileEndPoint, method: .put, headers: header)
+            AF.upload(multipartFormData: api.multipartData(_:), with: api)
                 .responseData(completionHandler: self.authCompletion(observer: observer))
-            
-            return Disposables.create {
-                request.cancel()
-            }
+            return Disposables.create()
         }
     }
 
@@ -139,29 +71,12 @@ final class AuthService {
         user: User,
         image: UIImage?
     ) -> Observable<AuthResponse> {
-        let header: HTTPHeaders = ["Content-Type": "multipart/form-data"]
+        let api: APIType = .signUp(user: user, image: image)
         
         return Observable<AuthResponse>.create { observer in
-            let request = AF.upload(multipartFormData: { multipartFromData in
-                multipartFromData.append(Data(user.id.utf8), withName: "id")
-                multipartFromData.append(Data(user.name.utf8), withName: "name")
-                multipartFromData.append(Data(user.password.utf8), withName: "password")
-                
-                if let image {
-                    multipartFromData.append(
-                        image.pngData() ?? Data(),
-                        withName: "image",
-                        fileName: "image/png",
-                        mimeType: "image/png"
-                    )
-                }
-                
-            }, to: Constants.signUpEndPoint, method: .post, headers: header)
+            AF.upload(multipartFormData: api.multipartData(_:), with: api)
                 .responseData(completionHandler: self.authCompletion(observer: observer))
-            
-            return Disposables.create {
-                request.cancel()
-            }
+            return Disposables.create()
         }
     }
     
@@ -186,7 +101,7 @@ final class AuthService {
                         observer.onError(APIError.requestFailed(description: response.message))
                         return
                     }
-                    if let response = response as? FriendsResopnse {
+                    if let response = response as? FriendsResponse {
                         observer.onError(APIError.requestFailed(description: response.message))
                         return
                     }

@@ -27,7 +27,7 @@ open class RxTextViewDelegateProxy
 
 extension RxTextViewDelegateProxy: UITextViewDelegate {
     /// For more information take a look at `DelegateProxyType`.
-    @objc open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    @objc open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText message: String) -> Bool {
         /**
          We've had some issues with observing text changes. This is here just in case we need the same hack in future and that
          we wouldn't need to change the public interface.
@@ -35,7 +35,7 @@ extension RxTextViewDelegateProxy: UITextViewDelegate {
         let forwardToDelegate = self.forwardToDelegate() as? UITextViewDelegate
         return forwardToDelegate?.textView?(textView,
             shouldChangeTextIn: range,
-            replacementText: text) ?? true
+            replacementText: message) ?? true
     }
 }
 

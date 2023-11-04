@@ -110,12 +110,12 @@ class ChatViewController: UIViewController {
 //MARK: - UICollectionViewDataSource
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Message.mockDataSource.count
+        return ChatMessage.mockDataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let isMine = Message.mockDataSource[indexPath.row].isMine(currentUser: viewModel.user)
-        let message = Message.mockDataSource[indexPath.row]
+        let isMine = ChatMessage.mockDataSource[indexPath.row].isMine(currentUser: viewModel.user)
+        let message = ChatMessage.mockDataSource[indexPath.row]
         
         switch message.type {
         case .text:

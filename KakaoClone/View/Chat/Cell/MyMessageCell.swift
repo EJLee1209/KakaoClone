@@ -71,9 +71,9 @@ final class MyMessageCell: UITableViewCell {
             make.width.lessThanOrEqualTo(UIScreen.main.bounds.width - 100)
         }
     }
-    func bind(message: Message){
-        messageLabel.text = message.text
-        dateLabel.text = message.dateTime.formattedDateString(dateFormat: "a hh:mm")
+    func bind(message: ChatMessage){
+        messageLabel.text = message.message
+        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
     }
     
 }

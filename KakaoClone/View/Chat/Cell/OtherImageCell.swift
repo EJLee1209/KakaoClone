@@ -85,8 +85,8 @@ final class OtherImageCell: UITableViewCell {
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2.5
     }
     
-    func makeUI(message: Message) {
-        dateLabel.text = message.dateTime.formattedDateString(dateFormat: "a hh:mm")
+    func makeUI(message: ChatMessage) {
+        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
         
         let numberOfImage = message.images.count
         guard numberOfImage > 0 else { return }

@@ -12,7 +12,7 @@ final class MyImageCell: UITableViewCell {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 12)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = .systemGray2
@@ -53,8 +53,8 @@ final class MyImageCell: UITableViewCell {
         }
     }
     
-    func makeUI(message: Message) {
-        dateLabel.text = message.dateTime.formattedDateString(dateFormat: "a hh:mm")
+    func makeUI(message: ChatMessage) {
+        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
         
         let numberOfImage = message.images.count
         guard numberOfImage > 0 else { return }

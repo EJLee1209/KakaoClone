@@ -179,6 +179,7 @@ extension FriendListViewController: AddFriendDelegate {
     }
 }
 
+//MARK: - FriendDetailViewControllerDelegate
 extension FriendListViewController: FriendDetailViewControllerDelegate {
     func updateUser(user: User) {
         viewModel.user = user

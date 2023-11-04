@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B2C3F2D7578F7194552C848E /* Pods_KakaoClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9454EADA26FE7BED7ABAE96A /* Pods_KakaoClone.framework */; };
 		CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17A2AECC8F800D0F56B /* FriendCard.swift */; };
-		CF04D17D2AECDBDF00D0F56B /* FriendsResopnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */; };
+		CF04D17D2AECDBDF00D0F56B /* FriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17C2AECDBDF00D0F56B /* FriendsResponse.swift */; };
 		CF04D17F2AED090900D0F56B /* FriendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D17E2AED090900D0F56B /* FriendDetailViewController.swift */; };
 		CF04D1812AED0A0C00D0F56B /* ProfileActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D1802AED0A0C00D0F56B /* ProfileActionButton.swift */; };
 		CF04D1832AED0F4000D0F56B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D1822AED0F4000D0F56B /* ProfileView.swift */; };
@@ -27,7 +27,10 @@
 		CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */; };
 		CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */; };
 		CF45ECD52AF263DF00CE8F7D /* ChatInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45ECD42AF263DF00CE8F7D /* ChatInputField.swift */; };
-		CF45ECD72AF3479500CE8F7D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45ECD62AF3479500CE8F7D /* Message.swift */; };
+		CF45ECD72AF3479500CE8F7D /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45ECD62AF3479500CE8F7D /* ChatMessage.swift */; };
+		CF7322922AF63E4200621EFE /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7322912AF63E4200621EFE /* ChatService.swift */; };
+		CF7322942AF64C7300621EFE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7322932AF64C7300621EFE /* Router.swift */; };
+		CF7322962AF64C8A00621EFE /* APIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7322952AF64C8A00621EFE /* APIType.swift */; };
 		CF7F7C992AF0DB2700EED0C7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */; };
 		CF7F7C9D2AF1034700EED0C7 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C9C2AF1034700EED0C7 /* ChatViewModel.swift */; };
 		CF7F7CA02AF103D800EED0C7 /* MyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F7C9F2AF103D800EED0C7 /* MyMessageCell.swift */; };
@@ -62,7 +65,7 @@
 		9454EADA26FE7BED7ABAE96A /* Pods_KakaoClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KakaoClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD200CCB53EA98BF2A1599D6 /* Pods-KakaoClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoClone.debug.xcconfig"; path = "Target Support Files/Pods-KakaoClone/Pods-KakaoClone.debug.xcconfig"; sourceTree = "<group>"; };
 		CF04D17A2AECC8F800D0F56B /* FriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCard.swift; sourceTree = "<group>"; };
-		CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResopnse.swift; sourceTree = "<group>"; };
+		CF04D17C2AECDBDF00D0F56B /* FriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponse.swift; sourceTree = "<group>"; };
 		CF04D17E2AED090900D0F56B /* FriendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailViewController.swift; sourceTree = "<group>"; };
 		CF04D1802AED0A0C00D0F56B /* ProfileActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionButton.swift; sourceTree = "<group>"; };
 		CF04D1822AED0F4000D0F56B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -80,7 +83,10 @@
 		CF43D2082AEE4DDD007C8AC6 /* UnderlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineLabel.swift; sourceTree = "<group>"; };
 		CF43D20A2AEE5929007C8AC6 /* EditDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailViewController.swift; sourceTree = "<group>"; };
 		CF45ECD42AF263DF00CE8F7D /* ChatInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputField.swift; sourceTree = "<group>"; };
-		CF45ECD62AF3479500CE8F7D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		CF45ECD62AF3479500CE8F7D /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		CF7322912AF63E4200621EFE /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		CF7322932AF64C7300621EFE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CF7322952AF64C8A00621EFE /* APIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIType.swift; sourceTree = "<group>"; };
 		CF7F7C982AF0DB2700EED0C7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CF7F7C9C2AF1034700EED0C7 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		CF7F7C9F2AF103D800EED0C7 /* MyMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
@@ -300,8 +306,10 @@
 				CFF8B1852AEA78F9003CC800 /* User.swift */,
 				CFF8B18B2AEA7FC4003CC800 /* AuthResponse.swift */,
 				CF1848552AEBC50C0020F848 /* FriendListSection.swift */,
-				CF04D17C2AECDBDF00D0F56B /* FriendsResopnse.swift */,
-				CF45ECD62AF3479500CE8F7D /* Message.swift */,
+				CF04D17C2AECDBDF00D0F56B /* FriendsResponse.swift */,
+				CF45ECD62AF3479500CE8F7D /* ChatMessage.swift */,
+				CF7322932AF64C7300621EFE /* Router.swift */,
+				CF7322952AF64C8A00621EFE /* APIType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				CFF8B1872AEA7DDD003CC800 /* AuthService.swift */,
+				CF7322912AF63E4200621EFE /* ChatService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -452,6 +461,7 @@
 				CF7F7CA02AF103D800EED0C7 /* MyMessageCell.swift in Sources */,
 				CF04D18B2AED125B00D0F56B /* ThemeFont.swift in Sources */,
 				CF1848522AEBBA540020F848 /* FriendListViewModel.swift in Sources */,
+				CF7322962AF64C8A00621EFE /* APIType.swift in Sources */,
 				CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */,
 				CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */,
 				CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */,
@@ -460,7 +470,7 @@
 				CF04D18D2AED136F00D0F56B /* FriendDetailViewModel.swift in Sources */,
 				CF04D17F2AED090900D0F56B /* FriendDetailViewController.swift in Sources */,
 				CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */,
-				CF45ECD72AF3479500CE8F7D /* Message.swift in Sources */,
+				CF45ECD72AF3479500CE8F7D /* ChatMessage.swift in Sources */,
 				CF04D1812AED0A0C00D0F56B /* ProfileActionButton.swift in Sources */,
 				CFF8B1842AEA71CC003CC800 /* SignUpViewModel.swift in Sources */,
 				CF7F7CA62AF1045C00EED0C7 /* OtherImageCell.swift in Sources */,
@@ -480,13 +490,15 @@
 				CF1848542AEBBFD70020F848 /* FriendCell.swift in Sources */,
 				CFF8B1802AEA59DC003CC800 /* Reactive.swift in Sources */,
 				CF04D1852AED123000D0F56B /* UIColor.swift in Sources */,
+				CF7322942AF64C7300621EFE /* Router.swift in Sources */,
 				CFF8B1632AEA476D003CC800 /* SignUpViewController.swift in Sources */,
 				CF04D1832AED0F4000D0F56B /* ProfileView.swift in Sources */,
 				CF7F7CA42AF1044700EED0C7 /* MyImageCell.swift in Sources */,
 				CF18484A2AEBA7D00020F848 /* MainViewModel.swift in Sources */,
 				CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */,
 				CF7F7C9D2AF1034700EED0C7 /* ChatViewModel.swift in Sources */,
-				CF04D17D2AECDBDF00D0F56B /* FriendsResopnse.swift in Sources */,
+				CF04D17D2AECDBDF00D0F56B /* FriendsResponse.swift in Sources */,
+				CF7322922AF63E4200621EFE /* ChatService.swift in Sources */,
 				CFF8B1862AEA78F9003CC800 /* User.swift in Sources */,
 				CF92D5F02AECB740003681EB /* AddFriendViewController.swift in Sources */,
 				CF7F7C992AF0DB2700EED0C7 /* ChatViewController.swift in Sources */,

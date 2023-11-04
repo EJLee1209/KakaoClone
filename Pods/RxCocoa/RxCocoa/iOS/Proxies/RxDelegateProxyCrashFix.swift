@@ -14,7 +14,7 @@ import Foundation
 // This is tracked at this bug: https://github.com/ReactiveX/RxSwift/issues/2428 This can be
 // removed if/when the actual source of the problem is found
 @objc extension RxCollectionViewDelegateProxy {
-    var text: String {
+    var message: String {
         return String()
     }
 }
@@ -24,7 +24,7 @@ import Foundation
 // This is tracked at this bug: https://github.com/ReactiveX/RxSwift/issues/2428 This can be
 //removed if/when the actual source of the problem is found
 @objc extension RxTableViewDelegateProxy {
-    var text: String {
+    var message: String {
         return String()
     }
 }

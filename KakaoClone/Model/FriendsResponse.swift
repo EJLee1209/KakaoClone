@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FriendsResopnse: Codable {
+struct FriendsResponse: Codable {
     let status: Bool
     let message: String
     var data: [User]?

@@ -71,7 +71,7 @@ final class AddFriendViewModel {
         guard let targetUser = self.searchResult else { return }
         addFriendState.accept(.loading)
         
-        authService.addFriend(from_id: user.id, to_id: targetUser.id)
+        authService.addFriend(fromId: user.id, toId: targetUser.id)
             .subscribe { [weak self] isSuccess in
                 self?.addFriendState.accept(.success(isSuccess))
             } onError: { [weak self] error in
@@ -85,7 +85,7 @@ final class AddFriendViewModel {
         guard let targetUser = self.searchResult else { return }
         deleteFriendState.accept(.loading)
         
-        authService.deleteFriend(from_id: user.id, to_id: targetUser.id)
+        authService.deleteFriend(fromId: user.id, toId: targetUser.id)
             .subscribe { [weak self] isSuccess in
                 self?.deleteFriendState.accept(.success(isSuccess))
             } onError: { [weak self] error in

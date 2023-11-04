@@ -81,7 +81,11 @@ final class FriendCell: UITableViewCell {
         nameLabel.text = user.name
         stateLabel.text = user.stateMessage
         stateLabel.isHidden = user.stateMessage == nil
-        profileImageView.sd_setImage(with: user.imageUrl)
+        
+        if let imageURL = user.imageUrl {
+            profileImageView.sd_setImage(with: imageURL)
+        }
+        
         
         if isMine {
             profileImageView.snp.updateConstraints { make in

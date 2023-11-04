@@ -103,8 +103,8 @@ final class OtherMessageCell: UITableViewCell {
         layoutIfNeeded()
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2.5
     }
-    func bind(message: Message){
-        messageLabel.text = message.text
-        dateLabel.text = message.dateTime.formattedDateString(dateFormat: "a hh:mm")
+    func bind(message: ChatMessage){
+        messageLabel.text = message.message
+        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
     }
 }

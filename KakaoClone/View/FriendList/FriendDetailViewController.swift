@@ -238,5 +238,4 @@ extension FriendDetailViewController: UIImagePickerControllerDelegate, UINavigat
         viewModel.selectedProfileImage = selectedImage
         self.dismiss(animated: true)
     }
-    
 }
