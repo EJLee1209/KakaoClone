@@ -39,7 +39,6 @@ class ChatViewController: UIViewController {
     init(viewModel: ChatViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -51,7 +50,7 @@ class ChatViewController: UIViewController {
         layout()
         observeKeyboardState()
         inputField.delegate = self
-        
+        bind()
     }
     
     //MARK: - Helpers
@@ -65,11 +64,18 @@ class ChatViewController: UIViewController {
             make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
         }
         
-        view.layoutIfNeeded()
+//        view.layoutIfNeeded()
         
         tableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(inputField.frame.height)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(inputField.frame.height)
+            make.bottom.equalTo(inputField.snp.top)
+        }
+    }
+    
+    private func bind() {
+        viewModel.updateDataSource = { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
@@ -110,12 +116,12 @@ class ChatViewController: UIViewController {
 //MARK: - UICollectionViewDataSource
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ChatMessage.mockDataSource.count
+        return viewModel.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let isMine = ChatMessage.mockDataSource[indexPath.row].isMine(currentUser: viewModel.user)
-        let message = ChatMessage.mockDataSource[indexPath.row]
+        let isMine = viewModel.dataSource[indexPath.row].isMine(currentUser: viewModel.user)
+        let message = viewModel.dataSource[indexPath.row]
         
         switch message.type {
         case .text:
@@ -125,6 +131,9 @@ extension ChatViewController: UITableViewDataSource {
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: OtherMessageCell.id, for: indexPath) as! OtherMessageCell
+                if let sender = viewModel.friends.filter({ $0.id == message.senderId }).first {
+                    cell.setUser(user: sender)
+                }
                 cell.bind(message: message)
                 return cell
             }
@@ -135,7 +144,11 @@ extension ChatViewController: UITableViewDataSource {
                 return cell
             } else {
                 let cell = OtherImageCell()
+                if let sender = viewModel.friends.filter({ $0.id == message.senderId }).first {
+                    cell.setUser(user: sender)
+                }
                 cell.makeUI(message: message)
+                
                 return cell
             }
         }
@@ -144,6 +157,8 @@ extension ChatViewController: UITableViewDataSource {
 
 extension ChatViewController: ChatInputFieldDelegate {
     func sendMessage(text: String) {
-        print("DEBUG send message: \(text)")
+        viewModel.sendMessage(text)
+        
+        tableView.scrollToRow(at: .init(row: viewModel.dataSource.count - 1, section: 0), at: .bottom, animated: false)
     }
 }

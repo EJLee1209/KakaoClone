@@ -54,7 +54,8 @@ final class MyImageCell: UITableViewCell {
     }
     
     func makeUI(message: ChatMessage) {
-        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
+        
+        dateLabel.text = message.timestamp.makePrettyDateTime()
         
         let numberOfImage = message.images.count
         guard numberOfImage > 0 else { return }

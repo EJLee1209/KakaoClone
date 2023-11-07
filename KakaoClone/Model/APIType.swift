@@ -16,6 +16,15 @@ enum APIType {
     case signIn(id: String, password: String)
     case signUp(user: User, image: UIImage?)
     case updateProfile(user: User, selectedImage: UIImage?)
+    
+    case createRoom(userIds: [String])
+    case joinRoom(userId: String, chatRoomId: Int)
+    case exitRoom(userId: String, chatRoomId: Int)
+    case fetchOneToOneRoom(firstUserId: String, secondUserId: String)
+    case fetchMessages(chatRoomId: Int)
+    case fetchRoomUsers(chatRoomId: Int)
+//    case fetchRooms(userId: String)
+
 }
 
 extension APIType: Router, URLRequestConvertible {
@@ -39,23 +48,36 @@ extension APIType: Router, URLRequestConvertible {
             return "/register"
         case .updateProfile:
             return "/user/update"
+        case .createRoom:
+            return "/chat/room/create"
+        case .joinRoom:
+            return "/chat/room/join"
+        case .exitRoom:
+            return "/chat/room/exit"
+        case let .fetchOneToOneRoom(firstUserId, secondUserId):
+            return "/chat/room/one?userId1=\(firstUserId)&userId2=\(secondUserId)"
+        case let .fetchMessages(chatRoomId):
+            return "/chat?chatRoomId=\(chatRoomId)"
+        case let .fetchRoomUsers(chatRoomId):
+            return "/chat/room/users?chatRoomId=\(chatRoomId)"
         }
     }
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .deleteFriend,.addFriend, .signUp, .signIn:
+        case .deleteFriend,.addFriend, .signUp, .signIn, .createRoom, .joinRoom, .exitRoom:
             return .post
-        case .fetchFriends, .fetchUser:
+        case .fetchFriends, .fetchUser, .fetchOneToOneRoom, .fetchRoomUsers, .fetchMessages:
             return .get
         case .updateProfile:
             return .put
+        
         }
     }
     
     var headers: [String : String] {
         switch self {
-        case .deleteFriend, .addFriend, .fetchUser, .fetchFriends, .signIn:
+        case .deleteFriend, .addFriend, .fetchUser, .fetchFriends, .signIn, .createRoom, .joinRoom, .exitRoom, .fetchOneToOneRoom, .fetchMessages, .fetchRoomUsers:
             return ["Content-Type": "application/json"]
         case .signUp, .updateProfile:
             return ["Content-Type": "multipart/form-data"]
@@ -64,12 +86,16 @@ extension APIType: Router, URLRequestConvertible {
     
     var parameters: [String : Any]? {
         switch self {
+        case .fetchFriends, .fetchUser, .signUp, .updateProfile, .fetchOneToOneRoom, .fetchRoomUsers, .fetchMessages:
+            return nil
+        case let .createRoom(userIds):
+            return ["userIds" : userIds]
         case let .deleteFriend(fromId, toId), let .addFriend(fromId, toId):
             return ["from_id": fromId, "to_id": toId]
         case let .signIn(id, password):
             return ["id": id, "password": password]
-        case .fetchFriends, .fetchUser, .signUp, .updateProfile:
-            return nil
+        case let .joinRoom(userId, chatRoomId), let .exitRoom(userId,chatRoomId):
+            return ["userId": userId, "chatRoomId": chatRoomId]
         }
     }
     
@@ -78,6 +104,7 @@ extension APIType: Router, URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
+        print("DEBUG request url: \(baseURL + path)")
         let url = URL(string: baseURL + path)
         var request = URLRequest(url: url!)
         
@@ -96,7 +123,7 @@ extension APIType: Router, URLRequestConvertible {
         case let .signUp(user, image):
             multipartFormData.append(Data(user.id.utf8), withName: "id")
             multipartFormData.append(Data(user.name.utf8), withName: "name")
-            multipartFormData.append(Data(user.password.utf8), withName: "password")
+            multipartFormData.append(Data(user.password?.utf8 ?? "".utf8), withName: "password")
             
             if let image {
                 multipartFormData.append(

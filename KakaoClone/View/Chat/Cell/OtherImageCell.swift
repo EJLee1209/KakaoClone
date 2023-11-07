@@ -4,8 +4,6 @@
 //
 //  Created by 이은재 on 10/31/23.
 //
-
-
 import UIKit
 
 final class OtherImageCell: UITableViewCell {
@@ -84,9 +82,13 @@ final class OtherImageCell: UITableViewCell {
         layoutIfNeeded()
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2.5
     }
+    func setUser(user: User) {
+        profileImageView.sd_setImage(with: user.imageUrl)
+        nameLabel.text = user.name
+    }
     
     func makeUI(message: ChatMessage) {
-        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
+        dateLabel.text = message.timestamp.makePrettyDateTime()
         
         let numberOfImage = message.images.count
         guard numberOfImage > 0 else { return }
@@ -181,5 +183,4 @@ final class OtherImageCell: UITableViewCell {
         hStackView.distribution = .fillEqually
         return hStackView
     }
-
 }

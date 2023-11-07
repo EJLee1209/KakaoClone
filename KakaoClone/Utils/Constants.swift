@@ -8,5 +8,5 @@
 import Foundation
 
 final class Constants {
-    static let baseURL = "http://192.168.219.102:8080"
+    static let baseURL = "http://192.168.219.103:8080"
 }

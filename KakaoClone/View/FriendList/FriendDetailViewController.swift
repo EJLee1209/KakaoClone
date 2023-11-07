@@ -170,22 +170,16 @@ extension FriendDetailViewController: ProfileActionButtonDelegate {
     func tap(buttonType: ProfileActionButtonType) {
         switch buttonType {
         case .chat:
-            guard let mainTab = presentingViewController as? MainTabViewController else {
-                print("DEBUG MainTabViewController를 가져오지 못함")
-                return
-            }
-            guard let nav = mainTab.viewControllers?.first as? UINavigationController else {
-                print("DEBUG nav를 가져오지 못함")
-                return
-            }
-            
-            let chatVM = ChatViewModel(user: viewModel.user)
+            guard let mainTab = presentingViewController as? MainTabViewController else { return }
+            guard let nav = mainTab.viewControllers?.first as? UINavigationController else { return }
+            let chatVM = ChatViewModel(user: viewModel.user, selectedUser: viewModel.selectedFriend, chatType: .oneToOne)
             let vc = ChatViewController(viewModel: chatVM)
             vc.hidesBottomBarWhenPushed = true
             
             dismiss(animated: true) {
                 nav.pushViewController(vc, animated: true)
             }
+            
         case .editProfile:
             updateButtonIsHidden(isEditing: true)
         }

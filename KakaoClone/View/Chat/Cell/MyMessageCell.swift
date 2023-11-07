@@ -35,8 +35,14 @@ final class MyMessageCell: UITableViewCell {
         return label
     }()
     
+    private let loadingView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .medium)
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
     private lazy var hStackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [dateLabel, bubbleView])
+        let sv = UIStackView(arrangedSubviews: [loadingView, dateLabel, bubbleView])
         sv.axis = .horizontal
         sv.alignment = .bottom
         sv.spacing = 4
@@ -73,7 +79,11 @@ final class MyMessageCell: UITableViewCell {
     }
     func bind(message: ChatMessage){
         messageLabel.text = message.message
-        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
+        dateLabel.text = message.timestamp.makePrettyDateTime()
+        
+        guard let isSent = message.isSent else { return }
+        isSent ? loadingView.stopAnimating() : loadingView.startAnimating()
+        dateLabel.isHidden = !isSent
     }
     
 }

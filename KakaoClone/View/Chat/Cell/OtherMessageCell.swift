@@ -105,6 +105,11 @@ final class OtherMessageCell: UITableViewCell {
     }
     func bind(message: ChatMessage){
         messageLabel.text = message.message
-        dateLabel.text = message.timestamp.formattedDateString(dateFormat: "a hh:mm")
+        dateLabel.text = message.timestamp.makePrettyDateTime()
+    }
+    
+    func setUser(user: User) {
+        profileImageView.sd_setImage(with: user.imageUrl)
+        nameLabel.text = user.name
     }
 }

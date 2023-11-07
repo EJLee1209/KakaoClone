@@ -11,5 +11,6 @@ target 'KakaoClone' do
 	pod 'SnapKit', '~> 5.6.0'
 	pod 'Alamofire'
 	pod 'SDWebImage', '~> 5.0'
+	pod 'Socket.IO-Client-Swift', '~> 16.1.0'
 
 end

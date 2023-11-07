@@ -6,15 +6,32 @@
 //
 
 import Foundation
+import SocketIO
 
-struct ChatMessage: Codable {
+
+
+struct ChatMessage: SocketData, Codable {
     let id: Int
-    let roomId: Int
+    let chatRoomId: Int
     let senderId: String
     let message: String?
     let imagePath: [String]?
-    var timestamp: Date = Date()
+    var timestamp: String
     
+    var uuid: String? = UUID().uuidString
+    var isSent: Bool? = true
+    
+    func socketRepresentation() throws -> SocketData {
+        return [
+            "uuid": uuid ?? "",
+            "id": id,
+            "chatRoomId": chatRoomId,
+            "senderId": senderId,
+            "message": message ?? "",
+            "imagePath": imagePath ?? [],
+            "timestamp": timestamp
+        ]
+    }
     enum MessageType {
         case image
         case text
@@ -37,58 +54,4 @@ struct ChatMessage: Codable {
     }
     
     
-    static let mockDataSource: [ChatMessage] = [
-        .init(id: 0, roomId: 0, senderId: "suzylove", message: "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요", imagePath: nil),
-        .init(id: 1, roomId: 0, senderId: "dldmswo1209", message: "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕", imagePath: nil),
-        .init(id: 2, roomId: 0, senderId: "sonny", message: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-        ]),
-        .init(id: 2, roomId: 0, senderId: "sonny", message: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 3, roomId: 0, senderId: "dldmswo1209", message: "우와 월클 손흥민!", imagePath: nil),
-        .init(id: 4, roomId: 0, senderId: "suzylove", message: "어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...어맛...", imagePath: nil),
-        .init(id: 6, roomId: 0, senderId: "dldmswo1209", message: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 7, roomId: 0, senderId: "joker", message: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 8, roomId: 0, senderId: "sonny", message: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-        .init(id: 9, roomId: 0, senderId: "suzylove", message: nil, imagePath: [
-            "\(Constants.baseURL)/images/image-1698734600855.png",
-            "\(Constants.baseURL)/images/image-1698576086660.png",
-            "\(Constants.baseURL)/images/image-1698484467680.png",
-            "\(Constants.baseURL)/images/image-1698576205201.png",
-            "\(Constants.baseURL)/images/image-1698416125741.png",
-            "\(Constants.baseURL)/images/image-1698408236446.png",
-            "\(Constants.baseURL)/images/image-1698484500316.png"
-        ]),
-    ]
 }

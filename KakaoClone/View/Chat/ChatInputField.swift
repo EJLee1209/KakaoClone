@@ -104,6 +104,8 @@ final class ChatInputField: UIView {
     @objc private func handleTap() {
         guard let text = textField.text else { return }
         delegate?.sendMessage(text: text)
+        textField.text = ""
+        sendButton.isHidden = true
     }
 }
 

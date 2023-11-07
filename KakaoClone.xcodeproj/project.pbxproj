@@ -17,6 +17,9 @@
 		CF04D1882AED125300D0F56B /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D1872AED125300D0F56B /* ThemeColor.swift */; };
 		CF04D18B2AED125B00D0F56B /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D18A2AED125B00D0F56B /* ThemeFont.swift */; };
 		CF04D18D2AED136F00D0F56B /* FriendDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04D18C2AED136F00D0F56B /* FriendDetailViewModel.swift */; };
+		CF159A2E2AF7998B00F687FE /* APIServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF159A2D2AF7998B00F687FE /* APIServiceType.swift */; };
+		CF159A302AF79AE900F687FE /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF159A2F2AF79AE900F687FE /* SocketService.swift */; };
+		CF159A352AF7CE4800F687FE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF159A342AF7CE4800F687FE /* String.swift */; };
 		CF1848442AEBA28E0020F848 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848432AEBA28E0020F848 /* FriendListViewController.swift */; };
 		CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848452AEBA3050020F848 /* MainTabViewController.swift */; };
 		CF1848482AEBA3BF0020F848 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */; };
@@ -43,6 +46,8 @@
 		CFACC4AF2AEA968900F82081 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4AE2AEA968900F82081 /* UIViewController.swift */; };
 		CFACC4B22AEA98EC00F82081 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */; };
 		CFACC4B42AEA9FA300F82081 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFACC4B32AEA9FA300F82081 /* APIState.swift */; };
+		CFDE84222AF9208F00137F00 /* ChatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE84212AF9208F00137F00 /* ChatType.swift */; };
+		CFDE84242AF923DF00137F00 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDE84232AF923DF00137F00 /* ChatRoom.swift */; };
 		CFF8B1462AEA46B4003CC800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1452AEA46B4003CC800 /* AppDelegate.swift */; };
 		CFF8B1482AEA46B4003CC800 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF8B1472AEA46B4003CC800 /* SceneDelegate.swift */; };
 		CFF8B14F2AEA46B4003CC800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF8B14E2AEA46B4003CC800 /* Assets.xcassets */; };
@@ -73,6 +78,9 @@
 		CF04D1872AED125300D0F56B /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		CF04D18A2AED125B00D0F56B /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
 		CF04D18C2AED136F00D0F56B /* FriendDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailViewModel.swift; sourceTree = "<group>"; };
+		CF159A2D2AF7998B00F687FE /* APIServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceType.swift; sourceTree = "<group>"; };
+		CF159A2F2AF79AE900F687FE /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		CF159A342AF7CE4800F687FE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		CF1848432AEBA28E0020F848 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		CF1848452AEBA3050020F848 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		CF1848472AEBA3BF0020F848 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,8 @@
 		CFACC4AE2AEA968900F82081 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		CFACC4B12AEA98EC00F82081 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		CFACC4B32AEA9FA300F82081 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
+		CFDE84212AF9208F00137F00 /* ChatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatType.swift; sourceTree = "<group>"; };
+		CFDE84232AF923DF00137F00 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		CFF8B1422AEA46B4003CC800 /* KakaoClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF8B1452AEA46B4003CC800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFF8B1472AEA46B4003CC800 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -310,6 +320,8 @@
 				CF45ECD62AF3479500CE8F7D /* ChatMessage.swift */,
 				CF7322932AF64C7300621EFE /* Router.swift */,
 				CF7322952AF64C8A00621EFE /* APIType.swift */,
+				CFDE84212AF9208F00137F00 /* ChatType.swift */,
+				CFDE84232AF923DF00137F00 /* ChatRoom.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,6 +331,8 @@
 			children = (
 				CFF8B1872AEA7DDD003CC800 /* AuthService.swift */,
 				CF7322912AF63E4200621EFE /* ChatService.swift */,
+				CF159A2D2AF7998B00F687FE /* APIServiceType.swift */,
+				CF159A2F2AF79AE900F687FE /* SocketService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -339,6 +353,7 @@
 				CFACC4AE2AEA968900F82081 /* UIViewController.swift */,
 				CF04D1842AED123000D0F56B /* UIColor.swift */,
 				CF7F7CA82AF11B1A00EED0C7 /* Date.swift */,
+				CF159A342AF7CE4800F687FE /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +376,8 @@
 			dependencies = (
 			);
 			name = KakaoClone;
+			packageProductDependencies = (
+			);
 			productName = KakaoClone;
 			productReference = CFF8B1422AEA46B4003CC800 /* KakaoClone.app */;
 			productType = "com.apple.product-type.application";
@@ -389,6 +406,8 @@
 				Base,
 			);
 			mainGroup = CFF8B1392AEA46B3003CC800;
+			packageReferences = (
+			);
 			productRefGroup = CFF8B1432AEA46B4003CC800 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -468,6 +487,7 @@
 				CFF8B18C2AEA7FC4003CC800 /* AuthResponse.swift in Sources */,
 				CFF8B1662AEA47A9003CC800 /* Constants.swift in Sources */,
 				CF04D18D2AED136F00D0F56B /* FriendDetailViewModel.swift in Sources */,
+				CFDE84222AF9208F00137F00 /* ChatType.swift in Sources */,
 				CF04D17F2AED090900D0F56B /* FriendDetailViewController.swift in Sources */,
 				CF43D20B2AEE5929007C8AC6 /* EditDetailViewController.swift in Sources */,
 				CF45ECD72AF3479500CE8F7D /* ChatMessage.swift in Sources */,
@@ -479,6 +499,7 @@
 				CFF8B1822AEA5EDF003CC800 /* UnderlineTextField.swift in Sources */,
 				CF7F7CA92AF11B1A00EED0C7 /* Date.swift in Sources */,
 				CFF8B17D2AEA5431003CC800 /* LoginViewModel.swift in Sources */,
+				CF159A2E2AF7998B00F687FE /* APIServiceType.swift in Sources */,
 				CF1848562AEBC50C0020F848 /* FriendListSection.swift in Sources */,
 				CF43D2092AEE4DDD007C8AC6 /* UnderlineLabel.swift in Sources */,
 				CF92D5F22AECC207003681EB /* AddFriendViewModel.swift in Sources */,
@@ -486,6 +507,8 @@
 				CF04D17B2AECC8F800D0F56B /* FriendCard.swift in Sources */,
 				CFF8B18A2AEA7F4B003CC800 /* APIError.swift in Sources */,
 				CFF8B1882AEA7DDD003CC800 /* AuthService.swift in Sources */,
+				CFDE84242AF923DF00137F00 /* ChatRoom.swift in Sources */,
+				CF159A302AF79AE900F687FE /* SocketService.swift in Sources */,
 				CFF8B1462AEA46B4003CC800 /* AppDelegate.swift in Sources */,
 				CF1848542AEBBFD70020F848 /* FriendCell.swift in Sources */,
 				CFF8B1802AEA59DC003CC800 /* Reactive.swift in Sources */,
@@ -503,6 +526,7 @@
 				CF92D5F02AECB740003681EB /* AddFriendViewController.swift in Sources */,
 				CF7F7C992AF0DB2700EED0C7 /* ChatViewController.swift in Sources */,
 				CF04D1882AED125300D0F56B /* ThemeColor.swift in Sources */,
+				CF159A352AF7CE4800F687FE /* String.swift in Sources */,
 				CFF8B1482AEA46B4003CC800 /* SceneDelegate.swift in Sources */,
 				CF1848462AEBA3050020F848 /* MainTabViewController.swift in Sources */,
 			);
